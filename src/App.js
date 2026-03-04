@@ -1,8 +1,26 @@
 
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
+
+// pages & components
+import Home from './pages/Home';
+
+
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to the Atlas3.3</h1>
+      <BrowserRouter>
+
+        <div className="pages">
+          <Routes>
+            <Route 
+              path="/" 
+              element={true ? <Home /> : <Navigate to="/login" />} 
+            />
+            
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
