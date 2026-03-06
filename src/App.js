@@ -5,12 +5,15 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 // pages & components
 import Home from './pages/Home';
 import CreateCase from './pages/CreateCase';
+import Sidebar from './components/Sidebar';
 
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <BrowserRouter>
+      <Sidebar />
+      
 
         <div className="pages">
           <Routes>
@@ -25,8 +28,8 @@ function App() {
             
           </Routes>
         </div>
-      </BrowserRouter>
     </div>
+       </BrowserRouter>
   );
 }
 
