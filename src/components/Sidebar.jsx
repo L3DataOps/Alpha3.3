@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
-import "./Sidebar.css";
+import "../css/Sidebar.css";
+import logo from "../images/logo.png";
+import CurrentDate from "./CurrentDate";
+import CurrentTime from "./CurrentTime";
 
 function Sidebar() {
   return (
     <div className="sidebar">
-      <h2>Atlas</h2>
+      <CurrentTime />
+      <img src={logo} alt="Logo" className="logo" />
+      <CurrentDate />
+      
 
       <nav>
         <Link to="/">Home</Link>
