@@ -5,7 +5,7 @@ const EquipmentListSelect = ({
 }) => {
   return (
     <select
-      value={selectedEquipment?._id || ""} // bind by id
+      value={selectedEquipment?.equipmentName || ""} // bind by id
       onChange={(e) => {
         const eq = equipment.find(
           (item) => item.equipmentName === e.target.value,
@@ -15,7 +15,7 @@ const EquipmentListSelect = ({
     >
       <option value="">Select Equipment</option>
       {equipment.map((item) => (
-        <option key={item._id} value={item._id}>
+        <option key={item._id} value={item.equipmentName}>
           {item.equipmentName}
         </option>
       ))}
