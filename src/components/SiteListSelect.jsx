@@ -4,6 +4,8 @@ const SiteListSelect = ({ sites, selectedSite, setSelectedSite }) => {
       value={selectedSite}
       onChange={(e) => setSelectedSite(e.target.value)}
     >
+      <option value="">Select Site</option>
+
       {sites.map((site) => (
         <option key={site.siteNumber} value={site.siteNumber}>
           {site.siteName}
