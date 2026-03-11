@@ -7,7 +7,7 @@ const SiteListSelect = ({ sites, selectedSite, setSelectedSite }) => {
       <option value="">Select Site</option>
 
       {sites.map((site) => (
-        <option key={site.siteNumber} value={site.siteNumber}>
+        <option key={site.siteNumber} value={site.siteName}>
           {site.siteName}
         </option>
       ))}

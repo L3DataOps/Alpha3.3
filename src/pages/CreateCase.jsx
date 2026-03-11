@@ -5,6 +5,7 @@ import InitialDescription from "../components/InitialDescription";
 import SeverityListSelect from "../components/SeverityListSelect";
 import TagListSelect from "../components/TagListSelect";
 import { useEffect, useState } from "react";
+import SubmitButton from "../components/SubmitButton";
 
 const CreateCase = () => {
   // State for sites, selected site, and loading status
@@ -18,9 +19,9 @@ const CreateCase = () => {
   const [tags, setTags] = useState([]);
   const [selectedTags, setSelectedTags] = useState(null);
 
-  const selectedSiteData = sites.find(
-    (site) => site.siteNumber === selectedSite,
-  );
+  const selectedSiteData = sites.find((site) => site.siteName === selectedSite);
+
+  console.log("Selected Site Data:", selectedSiteData);
 
   const equipment = selectedSiteData?.equipment || [];
 
@@ -64,11 +65,36 @@ const CreateCase = () => {
     fetchTags();
   }, [selectedEquipment]);
 
-  console.log(selectedEquipment);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const caseData = {
+      siteName: selectedSite,
+      caseEquipment: selectedEquipment,
+      caseCategory: category,
+      caseSeverity: severity,
+      issueTags: selectedTags,
+      initialDescription: description,
+    };
+
+    console.log(caseData);
+
+    const response = await fetch("/api/cases", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(caseData),
+    });
+
+    const data = await response.json();
+
+    console.log("Case created:", data);
+  };
 
   return (
     <div className="create">
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>Create a New Case</h2>
         <h4>Select Site:</h4>
         {loading ? (
@@ -126,6 +152,8 @@ const CreateCase = () => {
             />
           </div>
         )}
+
+        {description && <SubmitButton submitHandler={handleSubmit} />}
       </form>
     </div>
   );

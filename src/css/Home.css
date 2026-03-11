@@ -1,8 +1,17 @@
-.site-card{
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.case-card{
     background-color: #fff;
     border-radius: 8px;
     border: 1px solid #ddd;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-bottom: 20px;
+}
+
+.case-card h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #333;
+    font-family: "Roboto", sans-serif;
 }
