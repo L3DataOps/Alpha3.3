@@ -4,6 +4,7 @@ import CategoryListSelect from "../components/CategoryListSelect";
 import InitialDescription from "../components/InitialDescription";
 import SeverityListSelect from "../components/SeverityListSelect";
 import TagListSelect from "../components/TagListSelect";
+import "../css/CreateCase.css";
 import { useEffect, useState } from "react";
 import SubmitButton from "../components/SubmitButton";
 
@@ -17,11 +18,18 @@ const CreateCase = () => {
   const [description, setDescription] = useState("");
   const [severity, setSeverity] = useState("");
   const [tags, setTags] = useState([]);
-  const [selectedTags, setSelectedTags] = useState(null);
+  const [selectedTags, setSelectedTags] = useState([]);
 
   const selectedSiteData = sites.find((site) => site.siteName === selectedSite);
 
-  console.log("Selected Site Data:", selectedSiteData);
+  console.log(selectedSite);
+  console.log(selectedSiteData);
+  console.log(selectedEquipment);
+  console.log(category);
+  console.log(severity);
+  console.log(tags);
+  console.log(selectedTags);
+  console.log(description);
 
   const equipment = selectedSiteData?.equipment || [];
 
@@ -69,7 +77,7 @@ const CreateCase = () => {
     e.preventDefault();
 
     const caseData = {
-      siteName: selectedSite,
+      siteName: selectedSiteData.siteName,
       caseEquipment: selectedEquipment,
       caseCategory: category,
       caseSeverity: severity,

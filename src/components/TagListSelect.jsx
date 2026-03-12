@@ -1,16 +1,29 @@
-const TagListSelect = ({ tags, selectedTag, setSelectedTags }) => {
+import "../css/CreateCase.css";
+
+const TagListSelect = ({ tags = [], selectedTags = [], setSelectedTags }) => {
+  const handleChange = (tag) => {
+    setSelectedTags((prevTags) => {
+      if (prevTags.includes(tag)) {
+        return prevTags.filter((t) => t !== tag);
+      } else {
+        return [...prevTags, tag];
+      }
+    });
+  };
+
   return (
-    <select
-      value={selectedTag}
-      onChange={(e) => setSelectedTags(e.target.value)}
-    >
-      <option value="">Select Tag</option>
+    <div>
       {tags.map((tag, index) => (
-        <option key={index} value={tag}>
+        <label key={index}>
+          <input
+            type="checkbox"
+            checked={selectedTags.includes(tag)}
+            onChange={() => handleChange(tag)}
+          />
           {tag}
-        </option>
+        </label>
       ))}
-    </select>
+    </div>
   );
 };
 
