@@ -22,15 +22,6 @@ const CreateCase = () => {
 
   const selectedSiteData = sites.find((site) => site.siteName === selectedSite);
 
-  console.log(selectedSite);
-  console.log(selectedSiteData);
-  console.log(selectedEquipment);
-  console.log(category);
-  console.log(severity);
-  console.log(tags);
-  console.log(selectedTags);
-  console.log(description);
-
   const equipment = selectedSiteData?.equipment || [];
 
   useEffect(() => {
@@ -98,6 +89,14 @@ const CreateCase = () => {
     const data = await response.json();
 
     console.log("Case created:", data);
+
+    // Reset form after submission
+    setSelectedSite("");
+    setSelectedEquipment("");
+    setCategory("");
+    setSeverity("");
+    setSelectedTags([]);
+    setDescription("");
   };
 
   return (
@@ -145,13 +144,13 @@ const CreateCase = () => {
             <h4>Tags:</h4>
             <TagListSelect
               tags={tags}
-              selectedTag={selectedTags}
+              selectedTags={selectedTags}
               setSelectedTags={setSelectedTags}
             />
           </div>
         )}
 
-        {selectedTags && (
+        {selectedTags.length > 0 && (
           <div>
             <h4>Initial Description:</h4>
             <InitialDescription
