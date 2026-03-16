@@ -1,21 +1,14 @@
-const CaseCard = ({ cases }) => {
-  const tags = Array.isArray(cases.issueTags)
-    ? cases.issueTags
-    : cases.issueTags?.split(",") || [];
+import { Link } from "react-router-dom";
 
+const CaseCard = ({ cases }) => {
   return (
-    <div className="case-card">
-      <h3>{cases.caseNumber}</h3>
-      <p>
-        <strong>{cases.siteName}</strong>
-      </p>
-      <p>Equipment: {cases.caseEquipment?.equipmentName}</p>
-      <p>Category: {cases.caseCategory}</p>
-      <p>Severity: {cases.caseSeverity}</p>
-      <p>Tags: {tags.join(", ")}</p>
-      <p>Description: {cases.initialDescription}</p>
-      <p>Action Taken: {cases.caseActionTaken}</p>
-    </div>
+    <Link to={`/cases/${cases._id}`} className="case-card-link">
+      <div className="case-card">
+        <h3>{cases.caseNumber}</h3>
+        <p>{cases.caseCategory}</p>
+        <p>Severity: {cases.caseSeverity}</p>
+      </div>
+    </Link>
   );
 };
 
