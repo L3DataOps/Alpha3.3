@@ -15,6 +15,7 @@
 .tag-bubble {
   color: white;
   background-color: #a50000;
+  border: 3px solid;
   border-radius: 15px;
   padding: 5px 10px;
   font-size: 12px;
@@ -41,4 +42,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.columns {
+  display: flex;
+  gap: 25px;
+  flex: 1;
+  padding: 15px;
+  border: 1px;
 }
