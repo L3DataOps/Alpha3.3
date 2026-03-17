@@ -1,40 +1,88 @@
-.initial-description-card {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
+.initial-description-card{
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    flex:1;
+    max-height: 90px;
 }
 
 .bar {
-  height: 3px;
-  background-color: #000000;
-  border-radius: 15px;
+    height: 3px;
+    background-color: #000000;
+    border-radius: 15px;
+    margin-bottom: 5px;
 }
 
-.tag-bubble {
-  color: white;
-  background-color: #a50000;
-  border-radius: 15px;
-  padding: 5px 10px;
-  font-size: 12px;
-  display: inline-block;
+.tag-bubble{
+    color: white;
+    background-color: #a50000;
+    border-radius: 15px;
+    padding: 5px 10px;
+    font-size: 12px;
+    display: inline-block;
+    margin: 3px 5px;
 }
 
 .summary-card {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-  max-width: 300px;
-  max-height: 350px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    min-width: 300px;
+    min-height: 350px;
 }
 
-.title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.accessory-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    min-width: 267px;
+    min-height: 237px;
+}
+
+.add-info-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    min-height: 237px;
+}
+
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.across{
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    border: 1px solid #0000ff;
+}
+
+.between{
+    justify-content: space-between;
+}
+
+.down{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border: 1px solid #ff0000;
 }
 
 .date {
