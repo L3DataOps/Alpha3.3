@@ -21,6 +21,7 @@ const SummaryCard = ({ caseData }) => {
 
       <p className="date">
         <strong>Date Created:</strong> {caseData.createdAt.split("T")[0]}
+        <space></space>
         {caseData.createdAt.split("T")[1].split(".")[0]}
       </p>
     </div>

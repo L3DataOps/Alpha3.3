@@ -32,6 +32,17 @@ const Home = () => {
   return (
     <div className="home">
       <h1>Home Page</h1>
+      <div className="columns">
+        <h2>Ticket#</h2>
+        <h2>Category</h2>
+        <h2>Site</h2>
+        <h2>Severity</h2>
+        <h2>Action Taken</h2>
+        <h2>Date/Time</h2>
+        <h2>Equipment</h2>
+        <h2>Tags</h2>
+      </div>
+      <div className="bar"></div>
       {loading ? (
         <p>Loading...</p>
       ) : (
