@@ -4,6 +4,7 @@ import InitialDescriptionCard from "../components/InitialDescriptionCard";
 import SummaryCard from "../components/SummaryCard";
 import AccessoryCard from "../components/AccessoryCard";
 import AddInfoCard from "../components/AddInfoCard";
+import TabCard from "../components/TabCard";
 import ActivityNotesSection from "../components/AtivityNotesSection";
 
 const CaseDetails = () => {
@@ -55,7 +56,6 @@ const CaseDetails = () => {
           </div>
         </div>
       </div>
-      <ActivityNotesSection caseData={caseData} />
     </div>
   );
 };
