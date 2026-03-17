@@ -56,6 +56,8 @@ const CaseDetails = () => {
           </div>
         </div>
       </div>
+      <TabCard caseData={caseData} />
+      <ActivityNotesSection caseId={id} caseData={caseData} />
     </div>
   );
 };
