@@ -1,10 +1,11 @@
 import "../css/CaseCard.css";
 
 const SummaryCard = ({ caseData }) => {
+  console.log("SummaryCard caseData:", caseData);
   return (
     <div className="summary-card">
       <div className="title">
-        <h6>{caseData.caseEquipment.caseType}</h6>
+        <h3>{caseData.caseEquipment.caseType}</h3>
         <h3>{caseData.caseNumber}</h3>
       </div>
       <div className="details">

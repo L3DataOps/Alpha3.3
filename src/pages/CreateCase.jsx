@@ -67,8 +67,11 @@ const CreateCase = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // remove `equipment` and keep the rest
+    const { equipment, _id, ...siteDataWithoutEquipment } = selectedSiteData;
+
     const caseData = {
-      siteName: selectedSiteData.siteName,
+      ...siteDataWithoutEquipment, // all site fields except equipment
       caseEquipment: selectedEquipment,
       caseCategory: category,
       caseSeverity: severity,
@@ -87,10 +90,9 @@ const CreateCase = () => {
     });
 
     const data = await response.json();
-
     console.log("Case created:", data);
 
-    // Reset form after submission
+    // Reset form
     setSelectedSite("");
     setSelectedEquipment("");
     setCategory("");
