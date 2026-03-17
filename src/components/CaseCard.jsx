@@ -14,7 +14,7 @@ const CaseCard = ({ cases }) => {
           {cases.createdAt.split("T")[0]} <space></space>
           {cases.createdAt.split("T")[1].split(".")[0]}
         </p>
-        <p> (Equipment){cases.equipmentID}</p>
+        <p> {cases.caseEquipment.equipmentName}</p>
         <p>
           {cases.issueTags.map((tag, index) => (
             <TagBubble key={index} tag={tag} />
