@@ -15,7 +15,6 @@
     margin-bottom: 5px;
 }
 
-<<<<<<< HEAD
 .tag-bubble {
   color: white;
   background-color: #a50000;
@@ -24,7 +23,7 @@
   padding: 5px 10px;
   font-size: 12px;
   display: inline-block;
-=======
+}
 .tag-bubble{
     color: white;
     background-color: #a50000;
@@ -33,7 +32,7 @@
     font-size: 12px;
     display: inline-block;
     margin: 3px 5px;
->>>>>>> 03f30533c2add765fd95bd2297c63ac3328801ca
+
 }
 
 .summary-card {
