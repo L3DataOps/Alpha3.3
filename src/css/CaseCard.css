@@ -97,6 +97,13 @@
   gap: 25px;
   flex: 1;
   padding: 15px;
-  border: 1px;
   justify-content: space-between;
+}
+
+.tab-card {
+  background-color: #9c9999;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
