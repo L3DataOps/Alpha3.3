@@ -15,7 +15,7 @@
     margin-bottom: 5px;
 }
 
-<<<<<<< HEAD
+
 .tag-bubble {
   color: white;
   background-color: #a50000;
@@ -24,17 +24,10 @@
   padding: 5px 10px;
   font-size: 12px;
   display: inline-block;
-=======
-.tag-bubble{
-    color: white;
-    background-color: #a50000;
-    border-radius: 15px;
-    padding: 5px 10px;
-    font-size: 12px;
-    display: inline-block;
-    margin: 3px 5px;
->>>>>>> 03f30533c2add765fd95bd2297c63ac3328801ca
+  margin: 3px 5px;
 }
+
+
 
 .summary-card {
     background-color: #f9f9f9;
@@ -107,5 +100,15 @@
   gap: 25px;
   flex: 1;
   padding: 15px;
-  border: 1px;
+  justify-content: space-between;
+}
+
+
+.tab-card{
+    background-color: #9c9999;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+
 }

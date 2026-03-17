@@ -4,6 +4,7 @@ import InitialDescriptionCard from "../components/InitialDescriptionCard";
 import SummaryCard from "../components/SummaryCard";
 import AccessoryCard from "../components/AccessoryCard";
 import AddInfoCard from "../components/AddInfoCard";
+import TabCard from "../components/TabCard";
 
 const CaseDetails = () => {
   const { id } = useParams();
@@ -54,6 +55,7 @@ const CaseDetails = () => {
           </div>
         </div>
       </div>
+      <TabCard caseData={caseData} />
     </div>
   );
 };
