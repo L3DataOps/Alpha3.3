@@ -5,12 +5,16 @@ import Home from './pages/Home';
 import CreateCase from './pages/CreateCase';
 import CaseDetails from './pages/CaseDetails';
 import Sidebar from './components/Sidebar';
+import TabBar from './components/TabBar';
+import './css/App.css';
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
+    
+      <BrowserRouter>
+        <div className="App">
         <Sidebar />
+        <TabBar />
 
         <div className="pages">
           <Routes>
@@ -35,6 +39,7 @@ function App() {
 
       </div>
     </BrowserRouter>
+    
   );
 }
 

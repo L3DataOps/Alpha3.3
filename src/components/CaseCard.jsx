@@ -1,8 +1,22 @@
-import { Link } from "react-router-dom";
+import { useTabs } from "../context/TabContext";
+import { useNavigate } from "react-router-dom";
 import TagBubble from "./TagBubble";
 import "../css/Home.css";
 
 const CaseCard = ({ cases }) => {
+  const { addTab } = useTabs();
+  const navigate = useNavigate();
+
+  const handleOpen = () => {
+    addTab({
+      id: cases._id,
+      title: cases.caseNumber,
+      path: `/cases/${cases._id}`,
+    });
+
+    navigate(`/cases/${cases._id}`);
+  };
+
   const formatElapsedTime = (dateString) => {
     const now = new Date();
     const past = new Date(dateString);
@@ -34,7 +48,7 @@ const CaseCard = ({ cases }) => {
   const elapsedTime = formatElapsedTime(cases.createdAt);
 
   return (
-    <Link to={`/cases/${cases._id}`} className="case-card-link">
+    <div onClick={handleOpen} className="case-card-link">
       <div className="case-card">
         <div>
           <h4>{cases.caseEquipment.caseType}</h4>
@@ -61,7 +75,7 @@ const CaseCard = ({ cases }) => {
           ))}
         </p>
       </div>
-    </Link>
+    </div>
   );
 };
 
