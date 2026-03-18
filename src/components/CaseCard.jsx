@@ -3,6 +3,36 @@ import TagBubble from "./TagBubble";
 import "../css/Home.css";
 
 const CaseCard = ({ cases }) => {
+  const formatElapsedTime = (dateString) => {
+    const now = new Date();
+    const past = new Date(dateString);
+
+    let diff = Math.floor((now - past) / 1000); // seconds
+
+    const units = [
+      { label: "y", value: 60 * 60 * 24 * 365 },
+      { label: "mo", value: 60 * 60 * 24 * 30 },
+      { label: "d", value: 60 * 60 * 24 },
+      { label: "h", value: 60 * 60 },
+      { label: "min", value: 60 },
+    ];
+
+    const results = [];
+
+    for (let unit of units) {
+      const amount = Math.floor(diff / unit.value);
+      if (amount > 0) {
+        results.push(`${amount}${unit.label}`);
+        diff -= amount * unit.value;
+      }
+      if (results.length === 2) break; // 👈 only keep 2 units
+    }
+
+    return results.length ? results.join(" ") : "0min";
+  };
+
+  const elapsedTime = formatElapsedTime(cases.createdAt);
+
   return (
     <Link to={`/cases/${cases._id}`} className="case-card-link">
       <div className="case-card">
@@ -14,14 +44,17 @@ const CaseCard = ({ cases }) => {
           <p> {cases.siteNumber}</p>
           <p> {cases.siteName}</p>
         </div>
+        <div>
+          <p> {elapsedTime}</p>
+        </div>
+        <div>
+          <p> Status:</p>
+          <p> {cases.actionTaken}</p>
+        </div>
+        <div>
+          <p> {cases.caseEquipment.equipmentName}</p>
+        </div>
 
-        <p> {cases.caseSeverity}</p>
-        <p> {cases.actionTaken}</p>
-        <p>
-          {cases.createdAt.split("T")[0]} <space></space>
-          {cases.createdAt.split("T")[1].split(".")[0]}
-        </p>
-        <p> {cases.caseEquipment.equipmentName}</p>
         <p>
           {cases.issueTags.map((tag, index) => (
             <TagBubble key={index} tag={tag} />
