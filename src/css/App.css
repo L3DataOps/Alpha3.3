@@ -1,0 +1,23 @@
+.tab-bar {
+  display: flex;
+  background: #ffffff;
+  padding: 5px;
+}
+
+.tab {
+  padding: 8px 12px;
+  margin-right: 5px;
+  background: #c0c0c0;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.tab.active {
+  background: #444;
+}
+
+.close {
+  margin-left: 8px;
+  color: red;
+  cursor: pointer;
+}
