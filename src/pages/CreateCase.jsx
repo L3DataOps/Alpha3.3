@@ -7,6 +7,7 @@ import TagListSelect from "../components/TagListSelect";
 import "../css/CreateCase.css";
 import { useEffect, useState } from "react";
 import SubmitButton from "../components/SubmitButton";
+import IssueTypeSelect from "../components/IssueTypeSelect";
 
 const CreateCase = () => {
   // State for sites, selected site, and loading status
@@ -19,6 +20,7 @@ const CreateCase = () => {
   const [severity, setSeverity] = useState("");
   const [tags, setTags] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
+  const [issueType, setIssueType] = useState("");
 
   const selectedSiteData = sites.find((site) => site.siteName === selectedSite);
 
@@ -75,6 +77,7 @@ const CreateCase = () => {
       caseEquipment: selectedEquipment,
       caseCategory: category,
       caseSeverity: severity,
+      issueType: issueType,
       issueTags: selectedTags,
       initialDescription: description,
     };
@@ -97,6 +100,7 @@ const CreateCase = () => {
     setSelectedEquipment("");
     setCategory("");
     setSeverity("");
+    setIssueType("");
     setSelectedTags([]);
     setDescription("");
   };
@@ -135,6 +139,16 @@ const CreateCase = () => {
         )}
 
         {category && (
+          <div>
+            <h4>Issue Type:</h4>
+            <IssueTypeSelect
+              issueType={issueType}
+              setIssueType={setIssueType}
+            />
+          </div>
+        )}
+
+        {issueType && (
           <div>
             <h4>Severity:</h4>
             <SeverityListSelect severity={severity} setSeverity={setSeverity} />

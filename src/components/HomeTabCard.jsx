@@ -3,6 +3,7 @@ import "../css/CaseCard.css";
 const HomeTabCard = ({
   caseData: {
     siteName,
+    region,
     network,
     county,
     towerOwner,
@@ -16,7 +17,7 @@ const HomeTabCard = ({
       <h3>
         Region:
         <br />
-        {siteName}
+        {region}
       </h3>
       <p>
         Network:
