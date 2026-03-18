@@ -107,3 +107,11 @@
   padding: 20px;
   margin-bottom: 20px;
 }
+
+.containerTags {
+  border-radius: 5px;
+  padding: 10px;
+  inline-size: 30ch;
+  margin-block-end: 1em;
+  overflow-wrap: break-word;
+}
