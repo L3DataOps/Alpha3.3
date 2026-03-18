@@ -10,10 +10,9 @@ function Sidebar() {
       <CurrentTime />
       <img src={logo} alt="Logo" className="logo" />
       <CurrentDate />
-      
 
       <nav>
-        <Link to="/">Home</Link>
+        <Link to="/">Open Cases</Link>
         <Link to="/create-case">Create Case</Link>
       </nav>
     </div>

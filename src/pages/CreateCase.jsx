@@ -6,6 +6,7 @@ import SeverityListSelect from "../components/SeverityListSelect";
 import TagListSelect from "../components/TagListSelect";
 import "../css/CreateCase.css";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SubmitButton from "../components/SubmitButton";
 import IssueTypeSelect from "../components/IssueTypeSelect";
 
@@ -23,6 +24,7 @@ const CreateCase = () => {
   const [issueType, setIssueType] = useState("");
 
   const selectedSiteData = sites.find((site) => site.siteName === selectedSite);
+  const navigate = useNavigate();
 
   const equipment = selectedSiteData?.equipment || [];
 
@@ -80,6 +82,7 @@ const CreateCase = () => {
       issueType: issueType,
       issueTags: selectedTags,
       initialDescription: description,
+      actionTaken: "Dispatched",
     };
 
     console.log(caseData);
@@ -94,6 +97,7 @@ const CreateCase = () => {
 
     const data = await response.json();
     console.log("Case created:", data);
+    navigate(`/cases/${data.insertedId}`);
 
     // Reset form
     setSelectedSite("");

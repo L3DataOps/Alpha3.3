@@ -1,15 +1,22 @@
 import { Link } from "react-router-dom";
 import TagBubble from "./TagBubble";
+import "../css/Home.css";
 
 const CaseCard = ({ cases }) => {
   return (
     <Link to={`/cases/${cases._id}`} className="case-card-link">
       <div className="case-card">
-        <h3>{cases.caseNumber}</h3>
-        <p> {cases.caseCategory}</p>
-        <p> {cases.siteName}</p>
+        <div>
+          <h4>{cases.caseEquipment.caseType}</h4>
+          <h3>{cases.caseNumber}</h3>
+        </div>
+        <div>
+          <p> {cases.siteNumber}</p>
+          <p> {cases.siteName}</p>
+        </div>
+
         <p> {cases.caseSeverity}</p>
-        <p> (Action Taken){cases.caseActionTaken}</p>
+        <p> {cases.actionTaken}</p>
         <p>
           {cases.createdAt.split("T")[0]} <space></space>
           {cases.createdAt.split("T")[1].split(".")[0]}

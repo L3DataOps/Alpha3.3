@@ -7,6 +7,7 @@ const CategoryListSelect = ({ category, setCategory }) => {
       <option>Minor</option>
       <option>Network</option>
       <option>Facilities</option>
+      <option>Civil</option>
       <option>Site Access</option>
     </select>
   );
