@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import NoteItem from "./NoteItem";
 import "../css/CaseCard.css";
 
-const ActivityNotesSection = ({ caseData }) => {
+const ActivityNotesSection = ({ caseData, currentUser }) => {
   const caseId = caseData._id;
 
   const [notes, setNotes] = useState([]);
@@ -13,6 +13,10 @@ const ActivityNotesSection = ({ caseData }) => {
     setNotes(caseData.caseNotes || []);
   }, [caseData]);
 
+  const sortedNotes = [...notes].sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+  );
+
   // ADD
   const addNote = async () => {
     if (!text.trim()) return;
@@ -22,7 +26,7 @@ const ActivityNotesSection = ({ caseData }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ text, author: "Current User" }),
+      body: JSON.stringify({ text, author: currentUser }),
     });
 
     const updatedNotes = await res.json();
@@ -61,8 +65,6 @@ const ActivityNotesSection = ({ caseData }) => {
     setText(note.text);
   };
 
-  console.log("NOTES COMPONENT RENDERED", caseData);
-
   return (
     <div className="activity-notes-card">
       <h3>Activity Notes</h3>
@@ -82,7 +84,7 @@ const ActivityNotesSection = ({ caseData }) => {
 
       {/* LIST */}
       <div className="notes-list">
-        {notes.map((note) => (
+        {sortedNotes.map((note) => (
           <NoteItem
             key={note._id}
             note={note}

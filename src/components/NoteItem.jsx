@@ -5,6 +5,9 @@ const NoteItem = ({ note, onEdit, onDelete }) => {
         <p>{note.text}</p>
         <small>
           {note.author} • {new Date(note.createdAt).toLocaleString()}
+          {note.updatedAt && note.updatedAt !== note.createdAt && (
+            <> • Last edited: {new Date(note.updatedAt).toLocaleString()}</>
+          )}
         </small>
       </div>
 

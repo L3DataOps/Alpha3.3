@@ -57,7 +57,10 @@ const CaseDetails = () => {
         </div>
       </div>
       <TabCard caseData={caseData} />
-      <ActivityNotesSection caseId={id} caseData={caseData} />
+      <ActivityNotesSection
+        caseData={caseData}
+        currentUser="First Name Last Name"
+      />
     </div>
   );
 };
