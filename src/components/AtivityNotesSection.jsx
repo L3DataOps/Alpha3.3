@@ -68,6 +68,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
   return (
     <div className="activity-notes-card">
       <h3>Activity Notes</h3>
+      <br></br>
 
       {/* INPUT */}
       <textarea
@@ -75,7 +76,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-
+      <br></br>
       {editingId ? (
         <button onClick={() => updateNote(editingId)}>Update</button>
       ) : (
@@ -83,14 +84,16 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
       )}
 
       {/* LIST */}
-      <div className="notes-list">
+      <div>
         {sortedNotes.map((note) => (
-          <NoteItem
-            key={note._id}
-            note={note}
-            onEdit={startEdit}
-            onDelete={deleteNote}
-          />
+          <div className="notes-list">
+            <NoteItem
+              key={note._id}
+              note={note}
+              onEdit={startEdit}
+              onDelete={deleteNote}
+            />
+          </div>
         ))}
       </div>
     </div>

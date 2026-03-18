@@ -115,3 +115,21 @@
   margin-block-end: 1em;
   overflow-wrap: break-word;
 }
+
+.activity-notes-card {
+  width: 550px;
+  height: 450px;
+}
+
+.notes-list {
+  background-color: #9c99;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  width: 500px;
+  display: flex;
+  position: relative;
+  left: 25px;
+}
