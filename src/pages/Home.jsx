@@ -6,6 +6,8 @@ import "../css/Home.css";
 const Home = () => {
   const [cases, setCases] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+
   useEffect(() => {
     const fetchCases = async () => {
       try {
@@ -29,9 +31,31 @@ const Home = () => {
 
   console.log("Cases on Home:", cases);
 
+  const filteredCases = cases.filter((c) => {
+    const search = searchTerm.toLowerCase();
+
+    return (
+      c.caseNumber?.toString().toLowerCase().includes(search) ||
+      c.siteName?.toLowerCase().includes(search) ||
+      c.siteNumber?.toLowerCase().includes(search) ||
+      c.caseCategory?.toLowerCase().includes(search) ||
+      c.caseSeverity?.toLowerCase().includes(search) ||
+      c.actionTaken?.toLowerCase().includes(search) ||
+      c.caseEquipment?.equipmentName?.toLowerCase().includes(search) ||
+      c.issueTags?.some((tag) => tag.toLowerCase().includes(search))
+    );
+  });
+
   return (
     <div className="home">
       <h1>Home Page</h1>
+      <input
+        type="text"
+        placeholder="Search cases..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-bar"
+      />
       <div className="columns">
         <h2>Ticket#</h2>
         <h2>Category</h2>
@@ -47,7 +71,7 @@ const Home = () => {
         <p>Loading...</p>
       ) : (
         <div>
-          {cases.map((cases) => (
+          {filteredCases.map((cases) => (
             <CaseCard key={cases.id} cases={cases} />
           ))}
         </div>

@@ -54,12 +54,13 @@ const CaseCard = ({ cases }) => {
         <div>
           <p> {cases.caseEquipment.equipmentName}</p>
         </div>
-
-        <p>
-          {cases.issueTags.map((tag, index) => (
-            <TagBubble key={index} tag={tag} />
-          ))}
-        </p>
+        <div className="containerTags">
+          <p>
+            {cases.issueTags.map((tag, index) => (
+              <TagBubble key={index} tag={tag} />
+            ))}
+          </p>
+        </div>
       </div>
     </Link>
   );
