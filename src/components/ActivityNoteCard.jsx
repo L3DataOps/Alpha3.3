@@ -1,6 +1,8 @@
+import "../css/ActivityNotes.css";
+
 const NoteItem = ({ note, onEdit, onDelete }) => {
   return (
-    <div className="note-item">
+    <div className="note-card-temp">
       <div>
         <p>{note.text}</p>
         <small>

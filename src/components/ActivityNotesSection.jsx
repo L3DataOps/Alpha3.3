@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import NoteItem from "./NoteItem";
-import "../css/CaseCard.css";
+import ActivityNoteCard from "./ActivityNoteCard";
+import "../css/ActivityNotes.css";
 import TagBubble from "./TagBubble";
 
 const ActivityNotesSection = ({ caseData, currentUser }) => {
@@ -89,11 +89,12 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
       {/* LIST */}
       <div>
         {sortedNotes.map((note) => (
-          <div className="notes-list">
+          <div className="notes-card">
+            <h3>{note.author}</h3>
             {caseData.issueTags.map((tag, index) => (
               <TagBubble key={index} tag={tag} />
             ))}
-            <NoteItem
+            <ActivityNoteCard
               key={note._id}
               note={note}
               onEdit={startEdit}
