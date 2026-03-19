@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import NoteItem from "./NoteItem";
 import "../css/CaseCard.css";
+import TagBubble from "./TagBubble";
 
 const ActivityNotesSection = ({ caseData, currentUser }) => {
   const caseId = caseData._id;
@@ -75,6 +76,8 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
         placeholder="Write a note..."
         value={text}
         onChange={(e) => setText(e.target.value)}
+        rows="5"
+        cols="50"
       />
       <br></br>
       {editingId ? (
@@ -87,6 +90,9 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
       <div>
         {sortedNotes.map((note) => (
           <div className="notes-list">
+            {caseData.issueTags.map((tag, index) => (
+              <TagBubble key={index} tag={tag} />
+            ))}
             <NoteItem
               key={note._id}
               note={note}

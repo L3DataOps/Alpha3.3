@@ -71,11 +71,11 @@ const Home = () => {
       />
       <div className="columns">
         <h2>Ticket#</h2>
-        <h2>Category</h2>
+        {/*<h2>Category</h2>*/}
         <h2>Site</h2>
-        <h2>Severity</h2>
-        <h2>Action Taken</h2>
+        {/*<h2>Severity</h2>*/}
         <h2>Date/Time</h2>
+        <h2>Action Taken</h2>
         <h2>Equipment</h2>
         <h2>Tags</h2>
       </div>
