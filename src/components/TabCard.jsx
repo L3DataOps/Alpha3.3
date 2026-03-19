@@ -1,12 +1,23 @@
+/*
+=============================================================================================
+Change Log ( -- YYYY-MM-DD : Name - Message)
+ -- Version changes and event history
+=============================================================================================
+
+-- 2026-03-19 : Marcos - Added comment tracking
+*/
+
+//Global Imports
 import { useState } from "react";
 import "../css/CaseCard.css";
 import HomeTabCard from "./HomeTabCard";
 
+// Component for displaying a card with tabs for case details in the CaseDetails page
 const TabCard = ({ caseData }) => {
-  // Track which tab is active
+  // State to track the active tab
   const [activeTab, setActiveTab] = useState("summary");
 
-  // Render tab buttons
+  // Render the tab buttons
   const renderTabs = () => (
     <div className="tab-buttons" style={{ display: "flex", gap: "1rem" }}>
       <button
@@ -30,7 +41,7 @@ const TabCard = ({ caseData }) => {
     </div>
   );
 
-  // Render content based on active tab
+  // Render the content based on the active tab
   const renderContent = () => {
     switch (activeTab) {
       case "summary":
@@ -65,6 +76,7 @@ const TabCard = ({ caseData }) => {
     }
   };
 
+  // Main render of this TabCard component, including the tab buttons and the content area
   return (
     <div
       className="tab-card"

@@ -1,8 +1,20 @@
+/*
+=============================================================================================
+Change Log ( -- YYYY-MM-DD : Name - Message)
+ -- Version changes and event history
+=============================================================================================
+
+-- 2026-03-19 : Marcos - Added comment tracking
+*/
+
+//Global Imports
 import { useTabs } from "../context/TabContext";
 import { useNavigate } from "react-router-dom";
 import closeIcon from "../images/close.png";
 
+// Component for the tab bar that displays open tabs and allows navigation between them
 const TabBar = () => {
+  // Get the tabs, active tab, and functions to set active tab and close tabs from the TabContext
   const { tabs, activeTab, setActiveTab, closeTab } = useTabs();
   const navigate = useNavigate();
 

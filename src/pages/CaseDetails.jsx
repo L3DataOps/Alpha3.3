@@ -5,7 +5,7 @@ import SummaryCard from "../components/SummaryCard";
 import AccessoryCard from "../components/AccessoryCard";
 import AddInfoCard from "../components/AddInfoCard";
 import TabCard from "../components/TabCard";
-import ActivityNotesSection from "../components/AtivityNotesSection";
+import ActivityNotesSection from "../components/ActivityNotesSection";
 
 const CaseDetails = () => {
   const { id } = useParams();
