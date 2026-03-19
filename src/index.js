@@ -7,9 +7,7 @@ import { TabProvider } from "./context/TabContext.jsx";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <TabProvider>
-    <React.StrictMode>
       <App />
-    </React.StrictMode>
   </TabProvider>
   
   
