@@ -8,14 +8,16 @@ const CaseCard = ({ cases }) => {
   const navigate = useNavigate();
 
   const handleOpen = () => {
-    addTab({
-      id: cases._id,
-      title: cases.caseNumber,
-      path: `/cases/${cases._id}`,
-    });
+  const id = cases._id || cases.caseNumber;
 
-    navigate(`/cases/${cases._id}`);
-  };
+  addTab({
+    id,
+    title: cases.caseNumber,
+    path: `/cases/${id}`,
+  });
+
+  navigate(`/cases/${id}`);
+};
 
   const formatElapsedTime = (dateString) => {
     const now = new Date();

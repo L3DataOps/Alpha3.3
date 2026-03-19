@@ -1,5 +1,6 @@
 import { useTabs } from "../context/TabContext";
 import { useNavigate } from "react-router-dom";
+import closeIcon from "../images/close.png";
 
 const TabBar = () => {
   const { tabs, activeTab, setActiveTab, closeTab } = useTabs();
@@ -24,7 +25,7 @@ const TabBar = () => {
               closeTab(tab.id);
             }}
           >
-            ✕
+            <img src={closeIcon} alt="Close" />
           </span>
         </div>
       ))}

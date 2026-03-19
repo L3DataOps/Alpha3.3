@@ -7,14 +7,17 @@ export const TabProvider = ({ children }) => {
   const [activeTab, setActiveTab] = useState(null);
 
   const addTab = (tab) => {
-    setTabs((prev) => {
-      const exists = prev.find((t) => t.id === tab.id);
-      if (exists) return prev;
-      return [...prev, tab];
-    });
+  setTabs((prev) => {
+    const exists = prev.some((t) => t.id === tab.id);
 
+    const updatedTabs = exists ? prev : [...prev, tab];
+
+    // 👇 move this INSIDE so it syncs with tabs update
     setActiveTab(tab.id);
-  };
+
+    return updatedTabs;
+  });
+};
 
   const closeTab = (id) => {
     setTabs((prev) => {

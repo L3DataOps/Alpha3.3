@@ -1,13 +1,24 @@
+/*
+=============================================================================================
+Change Log ( -- YYYY-MM-DD : Name - Message)
+ -- Version changes and event history
+=============================================================================================
+
+-- 2026-03-19 : Daniel - Added comment tracking
+*/
+
+//Global Imports
 import { useEffect, useState } from "react";
 import CaseCard from "../components/CaseCard";
-
 import "../css/Home.css";
 
 const Home = () => {
+  // Sets state for cases and search bar
   const [cases, setCases] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Fetch API Call to grab cases
   useEffect(() => {
     const fetchCases = async () => {
       try {
@@ -29,8 +40,10 @@ const Home = () => {
     fetchCases();
   }, []);
 
+  // Legs cases grabed
   console.log("Cases on Home:", cases);
 
+  // Filters cases based on value in search box and updates state
   const filteredCases = cases.filter((c) => {
     const search = searchTerm.toLowerCase();
 
@@ -53,7 +66,7 @@ const Home = () => {
         type="text"
         placeholder="Search cases..."
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={(e) => setSearchTerm(e.target.value)} // Updates search state value on keypress
         className="search-bar"
       />
       <div className="columns">
@@ -71,9 +84,13 @@ const Home = () => {
         <p>Loading...</p>
       ) : (
         <div>
-          {filteredCases.map((cases) => (
-            <CaseCard key={cases.id} cases={cases} />
-          ))}
+          {filteredCases.map(
+            (
+              cases, // Maps thru the filtered cases based on the search and populates CaseCard comp. per case
+            ) => (
+              <CaseCard key={cases.id} cases={cases} />
+            ),
+          )}
         </div>
       )}
     </div>
