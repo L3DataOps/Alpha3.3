@@ -94,10 +94,9 @@
 
 .columns {
   display: flex;
-  gap: 25px;
+  gap: 125px;
   flex: 1;
   padding: 15px;
-  justify-content: space-between;
 }
 
 .tab-card {
@@ -125,11 +124,16 @@
   background-color: #9c99;
   border: 1px solid #ddd;
   border-radius: 3px;
-  padding: 20px;
+  padding: 10px;
   margin-bottom: 20px;
   margin-top: 10px;
-  width: 500px;
-  display: flex;
-  position: relative;
-  left: 25px;
+  width: 550px;
+}
+
+small {
+  gap: 300px;
+  padding: 5px 10px;
+  font-size: 12px;
+  display: inline-block;
+  margin: 3px 5px;
 }
