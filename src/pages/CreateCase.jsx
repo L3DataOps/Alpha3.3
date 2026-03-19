@@ -1,3 +1,13 @@
+/*
+=============================================================================================
+Change Log ( -- YYYY-MM-DD : Name - Message)
+ -- Version changes and event history
+=============================================================================================
+
+-- 2026-03-19 : Daniel - Added comment tracking
+*/
+
+//Global Imports
 import SiteListSelect from "../components/SiteListSelect";
 import EquipmentListSelect from "../components/EquipmentListSelect";
 import CategoryListSelect from "../components/CategoryListSelect";
@@ -11,7 +21,7 @@ import SubmitButton from "../components/SubmitButton";
 import IssueTypeSelect from "../components/IssueTypeSelect";
 
 const CreateCase = () => {
-  // State for sites, selected site, and loading status
+  // State for sites, selected site, loading, selected equipment, category, description, severity, tags, selected tags, issue type
   const [sites, setSites] = useState([]);
   const [selectedSite, setSelectedSite] = useState("");
   const [loading, setLoading] = useState(true);
@@ -23,11 +33,16 @@ const CreateCase = () => {
   const [selectedTags, setSelectedTags] = useState([]);
   const [issueType, setIssueType] = useState("");
 
+  //Updates user selected state
   const selectedSiteData = sites.find((site) => site.siteName === selectedSite);
+
+  //Defines navigate OBJ for navigation
   const navigate = useNavigate();
 
+  //Updates equipment state based on selected equipment
   const equipment = selectedSiteData?.equipment || [];
 
+  // Fetch API call to grab all sites
   useEffect(() => {
     const fetchSites = async () => {
       try {
@@ -49,6 +64,7 @@ const CreateCase = () => {
     fetchSites();
   }, []);
 
+  //Fetch API call to grab all tags associated with selected equipment
   useEffect(() => {
     if (!selectedEquipment) return;
 
@@ -68,14 +84,16 @@ const CreateCase = () => {
     fetchTags();
   }, [selectedEquipment]);
 
+  //Function to create case once user submits
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // remove `equipment` and keep the rest
+    // Removes equipment array and _id and keeps the rest
     const { equipment, _id, ...siteDataWithoutEquipment } = selectedSiteData;
 
+    // Assigns all the associated field for a case's creation
     const caseData = {
-      ...siteDataWithoutEquipment, // all site fields except equipment
+      ...siteDataWithoutEquipment,
       caseEquipment: selectedEquipment,
       caseCategory: category,
       caseSeverity: severity,
@@ -83,10 +101,13 @@ const CreateCase = () => {
       issueTags: selectedTags,
       initialDescription: description,
       actionTaken: "Dispatched",
+      bundledTickets: [],
     };
 
+    //Logging for compile data
     console.log(caseData);
 
+    //Calls POST request to create case in MongoDB
     const response = await fetch("/api/cases", {
       method: "POST",
       headers: {
@@ -95,8 +116,13 @@ const CreateCase = () => {
       body: JSON.stringify(caseData),
     });
 
+    //Awaits for data to generate
     const data = await response.json();
+
+    //Logging Debug
     console.log("Case created:", data);
+
+    //Navigates to case once created
     navigate(`/cases/${data.insertedId}`);
 
     // Reset form
