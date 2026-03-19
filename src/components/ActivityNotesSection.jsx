@@ -77,7 +77,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
         value={text}
         onChange={(e) => setText(e.target.value)}
         rows="5"
-        cols="50"
+        cols="55"
       />
       <br></br>
       {editingId ? (
@@ -87,7 +87,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
       )}
 
       {/* LIST */}
-      <div>
+      <div className="scroller">
         {sortedNotes.map((note) => (
           <div className="notes-card">
             <h3>{note.author}</h3>

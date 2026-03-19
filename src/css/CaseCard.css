@@ -118,6 +118,7 @@
 .activity-notes-card {
   width: 550px;
   height: 450px;
+  font-size: 18px;
 }
 
 .notes-list {
@@ -136,4 +137,18 @@ small {
   font-size: 12px;
   display: inline-block;
   margin: 3px 5px;
+}
+
+.scroller {
+  width: 585px;
+  height: 500px;
+  padding: 10px;
+  margin-top: 20px;
+  scrollbar-width: thin;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+textarea {
+  font-size: 18px;
 }
