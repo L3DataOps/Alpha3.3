@@ -1,3 +1,13 @@
+/*
+=============================================================================================
+Change Log ( -- YYYY-MM-DD : Name - Message)
+ -- Version changes and event history
+=============================================================================================
+
+-- 2026-03-19 : Marcos - Added comment tracking
+*/
+
+// This component renders a dropdown select for choosing equipment in the Create a Case section.
 const EquipmentListSelect = ({
   equipment,
   selectedEquipment,

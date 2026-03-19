@@ -1,5 +1,16 @@
+/*
+=============================================================================================
+Change Log ( -- YYYY-MM-DD : Name - Message)
+ -- Version changes and event history
+=============================================================================================
+
+-- 2026-03-19 : Marcos - Added comment tracking
+*/
+
+//Global Imports
 import { useState, useEffect } from "react";
 
+// This component displays the current time in a simple format. Used in the sidebar.
 function CurrentTime() {
   const [time, setTime] = useState(new Date());
 
@@ -11,6 +22,7 @@ function CurrentTime() {
     return () => clearInterval(timer);
   }, []);
 
+  // Format the time as HH:MM:SS
   const formattedTime = time.toLocaleTimeString("en-US", {
     hour12: false,
     hour: "2-digit",

@@ -1,3 +1,13 @@
+/*
+=============================================================================================
+Change Log ( -- YYYY-MM-DD : Name - Message)
+ -- Version changes and event history
+=============================================================================================
+
+-- 2026-03-19 : Marcos - Added comment tracking
+*/
+
+// This component renders a dropdown select element for choosing a site for the Create a Case section.
 const SiteListSelect = ({ sites, selectedSite, setSelectedSite }) => {
   return (
     <select

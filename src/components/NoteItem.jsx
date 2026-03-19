@@ -1,3 +1,13 @@
+/*
+=============================================================================================
+Change Log ( -- YYYY-MM-DD : Name - Message)
+ -- Version changes and event history
+=============================================================================================
+
+-- 2026-03-19 : Marcos - Added comment tracking
+*/
+
+// Component to display individual additional note items within the Case details portion
 const NoteItem = ({ note, onEdit, onDelete }) => {
   return (
     <div className="note-item">

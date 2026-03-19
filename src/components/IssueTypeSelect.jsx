@@ -1,3 +1,13 @@
+/*
+=============================================================================================
+Change Log ( -- YYYY-MM-DD : Name - Message)
+ -- Version changes and event history
+=============================================================================================
+
+-- 2026-03-19 : Marcos - Added comment tracking
+*/
+
+// This component renders a dropdown select element for choosing the issue type (Alarm, reported, PM repair, Other) for the Create a Case section.
 const IssueTypeSelect = ({ issueType, setIssueType }) => {
   return (
     <div className="issue-type-select">

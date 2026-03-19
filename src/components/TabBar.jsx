@@ -19,6 +19,7 @@ const TabBar = () => {
   const navigate = useNavigate();
 
   return (
+    //Render the tab bar with buttons for each open tab, allowing users to switch between tabs and close them
     <div className="tab-bar">
       {tabs.map((tab) => (
         <div

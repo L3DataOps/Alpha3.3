@@ -1,8 +1,18 @@
+/*
+=============================================================================================
+Change Log ( -- YYYY-MM-DD : Name - Message)
+ -- Version changes and event history
+=============================================================================================
+
+-- 2026-03-19 : Marcos - Added comment tracking
+*/
+
+//Global Imports
 import "../css/CaseCard.css";
 
+// This component renders the information about the site in the Case Details page.
 const HomeTabCard = ({
   caseData: {
-    siteName,
     region,
     network,
     county,

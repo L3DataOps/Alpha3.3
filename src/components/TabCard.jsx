@@ -76,8 +76,8 @@ const TabCard = ({ caseData }) => {
     }
   };
 
-  // Main render of this TabCard component, including the tab buttons and the content area
   return (
+    // Main render of this TabCard component, including the tab buttons and the content area
     <div
       className="tab-card"
       style={{ border: "1px solid #ccc", padding: "1rem" }}

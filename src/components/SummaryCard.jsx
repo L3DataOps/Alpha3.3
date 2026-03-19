@@ -1,7 +1,23 @@
+/*
+=============================================================================================
+Change Log ( -- YYYY-MM-DD : Name - Message)
+ -- Version changes and event history
+=============================================================================================
+
+-- 2026-03-19 : Marcos - Added comment tracking
+*/
+
+//Global Imports
 import "../css/CaseCard.css";
 
+/*
+The SummaryCard component displays a summary of the case information,
+including the case type, case number, site name, equipment ID, equipment name,
+and the date the case was created. It uses the caseData prop to populate these details.
+*/
 const SummaryCard = ({ caseData }) => {
-  console.log("SummaryCard caseData:", caseData);
+  console.log("SummaryCard caseData:", caseData); // Debugging log to check the structure of caseData
+
   return (
     <div className="summary-card">
       <div className="title">

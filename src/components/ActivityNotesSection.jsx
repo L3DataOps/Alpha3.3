@@ -1,11 +1,21 @@
+/*
+=============================================================================================
+Change Log ( -- YYYY-MM-DD : Name - Message)
+ -- Version changes and event history
+=============================================================================================
+
+-- 2026-03-19 : Marcos - Added comment tracking
+*/
+
+//Global Imports
 import { useState, useEffect } from "react";
 import NoteItem from "./NoteItem";
 import "../css/CaseCard.css";
 import TagBubble from "./TagBubble";
 
+// This component renders the Activity Notes section of the Case Details page, allowing users to add, edit, and delete notes related to the case.
 const ActivityNotesSection = ({ caseData, currentUser }) => {
   const caseId = caseData._id;
-
   const [notes, setNotes] = useState([]);
   const [text, setText] = useState("");
   const [editingId, setEditingId] = useState(null);
@@ -18,7 +28,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
   );
 
-  // ADD
+  // ADD a note to the case by sending a POST request to the backend API, then updating the local state with the new list of notes returned from the server.
   const addNote = async () => {
     if (!text.trim()) return;
 
@@ -35,7 +45,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
     setText("");
   };
 
-  // UPDATE
+  // UPDATE a note by sending a PUT request to the backend API with the updated text, then updating the local state with the new list of notes returned from the server.
   const updateNote = async (noteId) => {
     const res = await fetch(`/api/cases/${caseId}/notes/${noteId}`, {
       method: "PUT",
@@ -51,7 +61,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
     setText("");
   };
 
-  // DELETE
+  // DELETE a note by sending a DELETE request to the backend API, then updating the local state with the new list of notes returned from the server.
   const deleteNote = async (noteId) => {
     const res = await fetch(`/api/cases/${caseId}/notes/${noteId}`, {
       method: "DELETE",
@@ -66,6 +76,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
     setText(note.text);
   };
 
+  // Render the Activity Notes section with a textarea for adding/editing notes and a list of existing notes. Each note displays its associated tags and has options to edit or delete it.
   return (
     <div className="activity-notes-card">
       <h3>Activity Notes</h3>

@@ -23,8 +23,8 @@ const TagListSelect = ({ tags = [], selectedTags = [], setSelectedTags }) => {
   };
 
   return (
+    //Renders a list of checkboxes for each tag, allowing users to select or deselect tags
     <div>
-      {/* Renders a list of checkboxes for each tag, allowing users to select or deselect tags */}
       {tags.map((tag, index) => (
         <label key={index}>
           <input
