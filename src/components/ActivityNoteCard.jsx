@@ -8,9 +8,11 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 */
 
 // Component to display individual additional note items within the Case details portion
+import "../css/ActivityNotes.css";
+
 const NoteItem = ({ note, onEdit, onDelete }) => {
   return (
-    <div className="note-item">
+    <div className="note-card-temp">
       <div>
         <p>{note.text}</p>
         <small>

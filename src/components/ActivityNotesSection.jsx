@@ -9,8 +9,8 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 
 //Global Imports
 import { useState, useEffect } from "react";
-import NoteItem from "./NoteItem";
-import "../css/CaseCard.css";
+import ActivityNoteCard from "./ActivityNoteCard";
+import "../css/ActivityNotes.css";
 import TagBubble from "./TagBubble";
 
 // This component renders the Activity Notes section of the Case Details page, allowing users to add, edit, and delete notes related to the case.
@@ -88,7 +88,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
         value={text}
         onChange={(e) => setText(e.target.value)}
         rows="5"
-        cols="50"
+        cols="55"
       />
       <br></br>
       {editingId ? (
@@ -98,13 +98,14 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
       )}
 
       {/* LIST */}
-      <div>
+      <div className="scroller">
         {sortedNotes.map((note) => (
-          <div className="notes-list">
+          <div className="notes-card">
+            <h3>{note.author}</h3>
             {caseData.issueTags.map((tag, index) => (
               <TagBubble key={index} tag={tag} />
             ))}
-            <NoteItem
+            <ActivityNoteCard
               key={note._id}
               note={note}
               onEdit={startEdit}

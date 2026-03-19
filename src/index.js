@@ -13,14 +13,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { TabProvider } from "./context/TabContext.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
 
 // The entry point of the React application, rendering the App component wrapped in the TabProvider to provide tab management context to the entire application.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+ <AuthProvider>
   <TabProvider>
-      <App />
+    <App />
   </TabProvider>
-  
-  
+</AuthProvider>
 );
 
