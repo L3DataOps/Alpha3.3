@@ -1,3 +1,13 @@
+/*
+=============================================================================================
+Change Log ( -- YYYY-MM-DD : Name - Message)
+ -- Version changes and event history
+=============================================================================================
+
+-- 2026-03-19 : Daniel - Added comment tracking
+*/
+
+//Global Imports
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import InitialDescriptionCard from "../components/InitialDescriptionCard";
@@ -8,9 +18,13 @@ import TabCard from "../components/TabCard";
 import ActivityNotesSection from "../components/ActivityNotesSection";
 
 const CaseDetails = () => {
+  //Paramater Definition to pass down and grab Case ID
   const { id } = useParams();
+
+  // State definition for
   const [caseData, setCaseData] = useState(null);
 
+  // Fetch API call to grab case data
   useEffect(() => {
     const fetchCase = async () => {
       try {
@@ -24,14 +38,14 @@ const CaseDetails = () => {
 
         if (!response.ok) {
           console.error("Error from server:", data);
-          setCaseData("error"); // 👈 important so it stops loading
+          setCaseData("error");
           return;
         }
 
         setCaseData(data);
       } catch (err) {
         console.error("Fetch failed:", err);
-        setCaseData("error"); // 👈 prevents infinite loading
+        setCaseData("error");
       }
     };
 
