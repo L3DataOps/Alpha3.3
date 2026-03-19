@@ -8,17 +8,8 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 */
 
 //Global Imports
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Home from './pages/Home';
-import CreateCase from './pages/CreateCase';
-import CaseDetails from './pages/CaseDetails';
-import Sidebar from './components/Sidebar';
-import TabBar from './components/TabBar';
-import './css/App.css';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
-
-// pages & components
 import Home from "./pages/Home";
 import CreateCase from "./pages/CreateCase";
 import CaseDetails from "./pages/CaseDetails";
