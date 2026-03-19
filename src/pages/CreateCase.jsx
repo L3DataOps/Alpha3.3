@@ -7,7 +7,7 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 -- 2026-03-19 : Daniel - Added comment tracking
 */
 
-//Global Imports
+// Global Imports
 import SiteListSelect from "../components/SiteListSelect";
 import EquipmentListSelect from "../components/EquipmentListSelect";
 import CategoryListSelect from "../components/CategoryListSelect";
@@ -21,7 +21,7 @@ import SubmitButton from "../components/SubmitButton";
 import IssueTypeSelect from "../components/IssueTypeSelect";
 
 const CreateCase = () => {
-  // State for sites, selected site, loading, selected equipment, category, description, severity, tags, selected tags, issue type
+  // State
   const [sites, setSites] = useState([]);
   const [selectedSite, setSelectedSite] = useState("");
   const [loading, setLoading] = useState(true);
@@ -33,20 +33,23 @@ const CreateCase = () => {
   const [selectedTags, setSelectedTags] = useState([]);
   const [issueType, setIssueType] = useState("");
 
-  //Updates user selected state
-  const selectedSiteData = sites.find((site) => site.siteName === selectedSite);
-
-  //Defines navigate OBJ for navigation
   const navigate = useNavigate();
 
-  //Updates equipment state based on selected equipment
+  const selectedSiteData = sites.find((site) => site.siteName === selectedSite);
+
   const equipment = selectedSiteData?.equipment || [];
 
-  // Fetch API call to grab all sites
+  // ✅ Fetch Sites WITH AUTH
   useEffect(() => {
     const fetchSites = async () => {
       try {
-        const response = await fetch("/api/sites");
+        const token = localStorage.getItem("token");
+
+        const response = await fetch("/api/sites", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
         if (!response.ok) {
           throw new Error("Failed to fetch sites");
@@ -64,7 +67,7 @@ const CreateCase = () => {
     fetchSites();
   }, []);
 
-  //Fetch API call to grab all tags associated with selected equipment
+  // Fetch Tags
   useEffect(() => {
     if (!selectedEquipment) return;
 
@@ -74,6 +77,7 @@ const CreateCase = () => {
         const data = await response.json();
 
         const tagObj = data.find((t) => t.type === selectedEquipment.type);
+
         setTags(tagObj?.tags || []);
       } catch (error) {
         console.error(error);
@@ -84,14 +88,19 @@ const CreateCase = () => {
     fetchTags();
   }, [selectedEquipment]);
 
-  //Function to create case once user submits
+  // Submit Case
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Removes equipment array and _id and keeps the rest
+    if (!selectedSiteData) {
+      console.error("No site selected");
+      return;
+    }
+
+    const token = localStorage.getItem("token"); // ✅ moved here
+
     const { equipment, _id, ...siteDataWithoutEquipment } = selectedSiteData;
 
-    // Assigns all the associated field for a case's creation
     const caseData = {
       ...siteDataWithoutEquipment,
       caseEquipment: selectedEquipment,
@@ -104,41 +113,47 @@ const CreateCase = () => {
       bundledTickets: [],
     };
 
-    //Logging for compile data
-    console.log(caseData);
+    console.log("Submitting case:", caseData);
 
-    //Calls POST request to create case in MongoDB
-    const response = await fetch("/api/cases", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(caseData),
-    });
+    try {
+      const response = await fetch("/api/cases", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // ✅ REQUIRED
+        },
+        body: JSON.stringify(caseData),
+      });
 
-    //Awaits for data to generate
-    const data = await response.json();
+      if (!response.ok) {
+        throw new Error("Failed to create case");
+      }
 
-    //Logging Debug
-    console.log("Case created:", data);
+      const data = await response.json();
 
-    //Navigates to case once created
-    navigate(`/cases/${data.insertedId}`);
+      console.log("Case created:", data);
 
-    // Reset form
-    setSelectedSite("");
-    setSelectedEquipment("");
-    setCategory("");
-    setSeverity("");
-    setIssueType("");
-    setSelectedTags([]);
-    setDescription("");
+      // Navigate to new case
+      navigate(`/cases/${data.insertedId}`);
+
+      // Reset form
+      setSelectedSite("");
+      setSelectedEquipment("");
+      setCategory("");
+      setSeverity("");
+      setIssueType("");
+      setSelectedTags([]);
+      setDescription("");
+    } catch (error) {
+      console.error("Error creating case:", error);
+    }
   };
 
   return (
     <div className="create">
       <form onSubmit={handleSubmit}>
         <h2>Create a New Case</h2>
+
         <h4>Select Site:</h4>
         {loading ? (
           <p>Loading sites...</p>
