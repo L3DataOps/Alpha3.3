@@ -87,7 +87,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
       )}
 
       {/* LIST */}
-      <div>
+      <div className="scroller">
         {sortedNotes.map((note) => (
           <div className="notes-list">
             {caseData.issueTags.map((tag, index) => (
