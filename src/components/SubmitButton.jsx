@@ -5,11 +5,19 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 =============================================================================================
 
 -- 2026-03-19 : Marcos - Added comment tracking
+-- 2026-03-20 : Marcos - Updated submit button to support disabled and active states
 */
 
-// Submit button for creating a case, which triggers the submitHandler function when clicked
-const SubmitButton = ({ submitHandler }) => {
-  return <button onClick={submitHandler}>Submit</button>;
+const SubmitButton = ({ isDisabled }) => {
+  return (
+    <button
+      type="submit"
+      className={`submit-btn ${isDisabled ? "disabled" : "active"}`}
+      disabled={isDisabled}
+    >
+      Submit
+    </button>
+  );
 };
 
 export default SubmitButton;

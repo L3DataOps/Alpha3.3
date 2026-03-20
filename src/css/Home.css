@@ -24,6 +24,18 @@
   color: inherit;
 }
 
+.case-card {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* Hover effect */
+.case-card:hover {
+  background-color: #fafafa; /* light highlight */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
 .search-bar {
   width: 100%;
   padding: 20px;

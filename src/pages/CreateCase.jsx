@@ -5,6 +5,7 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 =============================================================================================
 
 -- 2026-03-19 : Daniel - Added comment tracking
+-- 2026-03-20 : Marcos - Refactored CreateCase to use reusable SubmitButton and ClearButton components. Added form validation to control submit button state and implemented clear/reset functionality.
 */
 
 // Global Imports
@@ -18,6 +19,7 @@ import "../css/CreateCase.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SubmitButton from "../components/SubmitButton";
+import ClearButton from "../components/ClearButton";
 import IssueTypeSelect from "../components/IssueTypeSelect";
 
 const CreateCase = () => {
@@ -38,6 +40,28 @@ const CreateCase = () => {
   const selectedSiteData = sites.find((site) => site.siteName === selectedSite);
 
   const equipment = selectedSiteData?.equipment || [];
+
+  // Determines if all required fields are filled to enable submit button
+  const isFormComplete =
+    selectedSite &&
+    selectedEquipment &&
+    category &&
+    issueType &&
+    severity &&
+    selectedTags.length > 0 &&
+    description.trim();
+
+    // Resets all form fields to initial empty state (specifically for the clear button)
+  const handleClear = () => {
+    setSelectedSite("");
+    setSelectedEquipment("");
+    setCategory("");
+    setSeverity("");
+    setIssueType("");
+    setSelectedTags([]);
+    setDescription("");
+    setTags([]);
+  };
 
   // ✅ Fetch Sites WITH AUTH
   useEffect(() => {
@@ -221,7 +245,10 @@ const CreateCase = () => {
           </div>
         )}
 
-        {description && <SubmitButton submitHandler={handleSubmit} />}
+        <div className="button-row">
+          <ClearButton onClear={handleClear} /> {/* Clears all inputs when clicked */}
+          <SubmitButton isDisabled={!isFormComplete} /> {/* Submit button stays visible; enabled only when form is complete */}
+        </div>
       </form>
     </div>
   );
