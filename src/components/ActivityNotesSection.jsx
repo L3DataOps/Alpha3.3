@@ -19,6 +19,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
   const [notes, setNotes] = useState([]);
   const [text, setText] = useState("");
   const [editingId, setEditingId] = useState(null);
+  const [showTextbox, setShowTextbox] = useState(false);
 
   useEffect(() => {
     setNotes(caseData.caseNotes || []);
@@ -43,6 +44,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
     const updatedNotes = await res.json();
     setNotes(updatedNotes);
     setText("");
+    setShowTextbox(false);
   };
 
   // UPDATE a note by sending a PUT request to the backend API with the updated text, then updating the local state with the new list of notes returned from the server.
@@ -59,6 +61,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
     setNotes(updatedNotes);
     setEditingId(null);
     setText("");
+    setShowTextbox(false);
   };
 
   // DELETE a note by sending a DELETE request to the backend API, then updating the local state with the new list of notes returned from the server.
@@ -74,28 +77,37 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
   const startEdit = (note) => {
     setEditingId(note._id);
     setText(note.text);
+    setShowTextbox(true);
   };
 
   // Render the Activity Notes section with a textarea for adding/editing notes and a list of existing notes. Each note displays its associated tags and has options to edit or delete it.
   return (
     <div className="activity-notes-card">
-      <h3>Activity Notes</h3>
+      <h2>Activity Notes</h2>
       <br></br>
 
       {/* INPUT */}
-      <textarea
-        placeholder="Write a note..."
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        rows="5"
-        cols="95"
-      />
-      <br></br>
-      {editingId ? (
-        <button onClick={() => updateNote(editingId)}>Update</button>
-      ) : (
-        <button onClick={addNote}>Add Note</button>
+      {showTextbox && (
+        <>
+          <textarea
+            placeholder="Write a note..."
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            rows="5"
+            cols="95"
+          />
+          <br />
+
+          {editingId ? (
+            <button onClick={() => updateNote(editingId)}>Update</button>
+          ) : (
+            <button onClick={addNote}>Save</button>
+          )}
+        </>
       )}
+      <button onClick={() => setShowTextbox(!showTextbox)}>
+        {showTextbox ? "Close" : "Add Note"}
+      </button>
 
       {/* LIST */}
       <div className="scroller">
