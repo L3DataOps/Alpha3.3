@@ -5,6 +5,7 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 =============================================================================================
 
 -- 2026-03-19 : Marcos - Added comment tracking
+-- 2026-03-24 : Added Auth context to render logged user's Name
 */
 
 //Global Imports
@@ -32,9 +33,11 @@ function Sidebar() {
       </nav>
       <div className="settings">
         <h3>
-          Welcome, <br /> {user?.firstname}
-          <br /> {user?.lastname}
+          Welcome, <br />
         </h3>
+        <h2>
+          {user?.firstname} {user?.lastname}
+        </h2>
         <button onClick={logout}>Logout</button>
       </div>
     </div>

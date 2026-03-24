@@ -51,7 +51,7 @@ const CreateCase = () => {
     selectedTags.length > 0 &&
     description.trim();
 
-    // Resets all form fields to initial empty state (specifically for the clear button)
+  // Resets all form fields to initial empty state (specifically for the clear button)
   const handleClear = () => {
     setSelectedSite("");
     setSelectedEquipment("");
@@ -246,8 +246,10 @@ const CreateCase = () => {
         )}
 
         <div className="button-row">
-          <ClearButton onClear={handleClear} /> {/* Clears all inputs when clicked */}
-          <SubmitButton isDisabled={!isFormComplete} /> {/* Submit button stays visible; enabled only when form is complete */}
+          <ClearButton onClear={handleClear} />{" "}
+          {/* Clears all inputs when clicked */}
+          <SubmitButton isDisabled={!isFormComplete} />{" "}
+          {/* Submit button stays visible; enabled only when form is complete */}
         </div>
       </form>
     </div>
