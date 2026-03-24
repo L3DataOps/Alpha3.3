@@ -88,7 +88,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
         value={text}
         onChange={(e) => setText(e.target.value)}
         rows="5"
-        cols="55"
+        cols="95"
       />
       <br></br>
       {editingId ? (

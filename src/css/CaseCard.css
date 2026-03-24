@@ -146,8 +146,8 @@ small {
 }
 
 .scroller {
-  width: 585px;
-  height: 500px;
+  width: 1000px;
+  height: 800px;
   padding: 10px;
   margin-top: 20px;
   scrollbar-width: thin;
@@ -157,4 +157,5 @@ small {
 
 textarea {
   font-size: 18px;
+  margin: 20px;
 }

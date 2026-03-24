@@ -10,6 +10,7 @@
   position: fixed;
   left: 0;
   top: 0;
+
 }
 
 .sidebar h2 {
@@ -50,4 +51,8 @@
   color: #ffffff;
   float: right;
   font-family: "Roboto", sans-serif;
+}
+
+.settings h3{
+  font-weight: 300;
 }
