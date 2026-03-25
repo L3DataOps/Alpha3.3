@@ -5,6 +5,7 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 =============================================================================================
 
 -- 2026-03-19 : Marcos - Added comment tracking
+-- 2026-03-25 : Marcos - Created closed cases component to render closed cases and added route in App.js.
 */
 
 //Global Imports
@@ -12,6 +13,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 import Home from "./pages/Home";
 import CreateCase from "./pages/CreateCase";
+import ClosedCases from "./pages/ClosedCases";
 import CaseDetails from "./pages/CaseDetails";
 import Login from "./pages/Login";
 import Sidebar from "./components/Sidebar";
@@ -43,6 +45,11 @@ function App() {
             <Route
               path="/"
               element={user ? <Home /> : <Navigate to="/login" />}
+            />
+
+            <Route
+              path="/closed-cases"
+              element={user ? <ClosedCases /> : <Navigate to="/login" />}
             />
 
             <Route

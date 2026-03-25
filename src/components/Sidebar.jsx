@@ -6,6 +6,7 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 
 -- 2026-03-19 : Marcos - Added comment tracking
 -- 2026-03-24 : Added Auth context to render logged user's Name
+-- 2026-03-25 : Marcos - Added link to closed cases.
 */
 
 //Global Imports
@@ -29,6 +30,7 @@ function Sidebar() {
 
       <nav>
         <Link to="/">Open Cases</Link>
+        <Link to="/closed-cases">Closed Cases</Link>
         <Link to="/create-case">Create Case</Link>
       </nav>
       <div className="settings">
