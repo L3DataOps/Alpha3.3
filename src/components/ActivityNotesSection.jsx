@@ -20,6 +20,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
   const [text, setText] = useState("");
   const [editingId, setEditingId] = useState(null);
   const [showTextbox, setShowTextbox] = useState(false);
+  const [attachments, setAttachments] = useState([]);
 
   useEffect(() => {
     setNotes(caseData.caseNotes || []);
@@ -86,9 +87,9 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
       <h2>Activity Notes</h2>
       <br></br>
 
-      {/* INPUT */}
+      {/* TEXTBOX INPUT */}
       {showTextbox && (
-        <>
+        <div>
           <textarea
             placeholder="Write a note..."
             value={text}
@@ -96,20 +97,75 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
             rows="5"
             cols="95"
           />
-          <br />
 
-          {editingId ? (
-            <button onClick={() => updateNote(editingId)}>Update</button>
-          ) : (
-            <button onClick={addNote}>Save</button>
-          )}
-        </>
+          {/*ONCLICK BUTTONS*/}
+          <div className="note-actions">
+            {editingId ? (
+              <button
+                onClick={() => updateNote(editingId)}
+                className="btn-primary"
+              >
+                Update
+              </button>
+            ) : (
+              <button onClick={addNote} className="btn-primary">
+                Save
+              </button>
+            )}
+
+            <button
+              className="btn-secondary"
+              onClick={() => setShowTextbox(false)}
+            >
+              Cancel
+            </button>
+
+            {/* Attach Button */}
+            <label className="btn-secondary-attach-btn">
+              📎 Attach Files
+              <input
+                type="file"
+                multiple
+                hidden
+                onChange={(e) => {
+                  const files = Array.from(e.target.files);
+                  setAttachments((prev) => [...prev, ...files]);
+                }}
+              />
+            </label>
+          </div>
+        </div>
       )}
-      <button onClick={() => setShowTextbox(!showTextbox)}>
-        {showTextbox ? "Close" : "Add Note"}
-      </button>
 
-      {/* LIST */}
+      {/*Adding Note Button*/}
+      {!showTextbox && (
+        <button className="add-note-btn" onClick={() => setShowTextbox(true)}>
+          + Add Note
+        </button>
+      )}
+
+      <br></br>
+
+      {/* Displaying selected files */}
+      {attachments.length > 0 && (
+        <div className="attachment-list">
+          {attachments.map((file, index) => (
+            <div key={index} className="attachment-item">
+              {file.name}
+              <button
+                className="remove-file"
+                onClick={() =>
+                  setAttachments(attachments.filter((_, i) => i !== index))
+                }
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* NOTES LIST */}
       <div className="scroller">
         {sortedNotes.map((note) => (
           <div className="notes-card">
