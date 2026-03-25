@@ -65,6 +65,21 @@
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
 }
 
+.case-card-closed {
+  /* opacity: 0.65; */
+  background-color: #9e9e9e;
+}
+
+.case-card-closed:hover {
+  background-color: #9e9e9e;
+}
+
+.case-card-closed .case-cell h3,
+.case-card-closed .case-cell h4,
+.case-card-closed .case-cell p {
+  color: #ffffff;
+}
+
 .case-cell {
   min-width: 0;
 }
