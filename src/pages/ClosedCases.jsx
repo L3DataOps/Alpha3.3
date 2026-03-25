@@ -48,7 +48,7 @@ const ClosedCases = () => {
     const search = searchTerm.toLowerCase();
 
     return (
-      c.isOpen == false &&
+      c.isOpen === false &&
       (c.caseNumber?.toString().toLowerCase().includes(search) ||
         c.siteName?.toLowerCase().includes(search) ||
         c.siteNumber?.toLowerCase().includes(search) ||
