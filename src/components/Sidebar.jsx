@@ -34,6 +34,8 @@ function Sidebar() {
         <Link to="/create-case">Create Case</Link>
       </nav>
       <div className="settings">
+        <br />
+        <br />
         <h3>
           Welcome, <br />
         </h3>

@@ -1,7 +1,8 @@
+/*Header Style*/
 h2 {
   margin: 8px;
 }
-
+/*Activity Note Styles*/
 .activity-notes-card {
   background-color: #9c9999;
   border-radius: 8px;
@@ -19,8 +20,10 @@ h2 {
 
 .note-card-temp {
   background-color: #ddd;
+  border: 1px solid #000;
+  border-radius: 5px;
 }
-
+/*Add Note Button Style*/
 .add-note-btn {
   padding: 12px 65px;
   font-size: 20px;
@@ -45,6 +48,7 @@ h2 {
   transform: scale(0.98);
 }
 
+/*Attachment Button*/
 .btn-primary,
 .btn-secondary,
 .btn-secondary-attach-btn {
@@ -79,6 +83,7 @@ h2 {
   margin-top: 8px;
 }
 
+/*Attachment List Section*/
 .attachment-list {
   margin-top: 10px;
 }
@@ -108,4 +113,24 @@ h2 {
 
 .note-actions label {
   margin-left: auto;
+}
+
+/*Name/Tags showing Side by side*/
+.note-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px; /* space between name and tags */
+  flex-wrap: wrap; /* allows tags to wrap if too many */
+}
+
+.note-author {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Tag container */
+.tag-container {
+  display: flex;
+  gap: 6px;
 }

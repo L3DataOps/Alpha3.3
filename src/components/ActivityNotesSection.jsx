@@ -169,10 +169,15 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
       <div className="scroller">
         {sortedNotes.map((note) => (
           <div className="notes-card">
-            <h3>{note.author}</h3>
-            {caseData.issueTags.map((tag, index) => (
-              <TagBubble key={index} tag={tag} />
-            ))}
+            <div className="note-header">
+              <h3 className="note-author">{note.author}</h3>
+
+              <div className="tag-container">
+                {caseData.issueTags.map((tag, index) => (
+                  <TagBubble key={index} tag={tag} />
+                ))}
+              </div>
+            </div>
             <ActivityNoteCard
               key={note._id}
               note={note}
