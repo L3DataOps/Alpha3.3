@@ -74,7 +74,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1>Home Page</h1>
+      <h1>Open Cases</h1>
       <input
         type="text"
         placeholder="Search cases..."
