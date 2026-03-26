@@ -5,6 +5,8 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 =============================================================================================
 
 -- 2026-03-19 : Marcos - Added comment tracking
+-- 2026-03-24 : Marcos - Updated case card layout to align with Home columns
+-- 2026-03-25 : Marcos - Updated CaseCard component for styling to show closed cases with a different background color.
 */
 
 //Global Imports
@@ -67,31 +69,31 @@ const CaseCard = ({ cases }) => {
   // Render the case card with all the relevant information and tags. Clicking on the card will open the case details in a new tab.
   return (
     <div onClick={handleOpen} className="case-card-link">
-      <div className="case-card">
-        <div>
+      <div
+        className={`case-card ${cases.isOpen === false ? "case-card-closed" : ""}`}
+      >
+        <div className="case-cell">
           <h4>{cases.caseEquipment.caseType}</h4>
           <h3>{cases.caseNumber}</h3>
         </div>
-        <div>
+        <div className="case-cell">
           <p> {cases.siteNumber}</p>
           <p> {cases.siteName}</p>
         </div>
-        <div>
+        <div className="case-cell">
           <p> {elapsedTime}</p>
         </div>
-        <div>
+        <div className="case-cell">
           <p> Status:</p>
           <p> {cases.actionTaken}</p>
         </div>
-        <div>
+        <div className="case-cell">
           <p> {cases.caseEquipment.equipmentName}</p>
         </div>
-        <div className="containerTags">
-          <p>
-            {cases.issueTags.map((tag, index) => (
-              <TagBubble key={index} tag={tag} />
-            ))}
-          </p>
+        <div className="case-cell containerTags">
+          {cases.issueTags.map((tag, index) => (
+            <TagBubble key={index} tag={tag} />
+          ))}
         </div>
       </div>
     </div>

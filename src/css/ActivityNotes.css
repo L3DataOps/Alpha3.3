@@ -1,17 +1,136 @@
-.activity-notes-card{
-    background-color: aqua;
-    width: 1000px;
-    height: 1000px;
+/*Header Style*/
+h2 {
+  margin: 8px;
+}
+/*Activity Note Styles*/
+.activity-notes-card {
+  background-color: #9c9999;
+  border-radius: 8px;
+  width: 1000px;
+  height: auto;
 }
 
-.notes-card{
-    background-color: rgb(255, 255, 255);
-    margin: 10px;
-    padding: 20px;
-    border-radius: 15px;
-    border: 3px solid black;
+.notes-card {
+  background-color: rgb(255, 255, 255);
+  margin: 10px;
+  padding: 20px;
+  border-radius: 15px;
+  border: 3px solid black;
 }
 
-.note-card-temp{
-    background-color: rgb(7, 129, 54);
+.note-card-temp {
+  background-color: #ddd;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+/*Add Note Button Style*/
+.add-note-btn {
+  padding: 12px 65px;
+  font-size: 20px;
+  font-weight: 500;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+  margin: 10px auto;
+  display: block;
+}
+
+.add-note-btn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.add-note-btn:active {
+  transform: scale(0.98);
+}
+
+/*Attachment Button*/
+.btn-primary,
+.btn-secondary,
+.btn-secondary-attach-btn {
+  padding: 5px 12px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 5px;
+  margin: 5px;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-secondary-attach-btn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-secondary-attach-btn:active {
+  transform: scale(0.98);
+}
+
+.attach-btn {
+  display: inline-block;
+  margin-top: 8px;
+}
+
+/*Attachment List Section*/
+.attachment-list {
+  margin-top: 10px;
+}
+
+.attachment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f1f5f9;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+
+.remove-file {
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+}
+
+.note-actions {
+  display: flex;
+  align-items: center;
+}
+
+.note-actions label {
+  margin-left: auto;
+}
+
+/*Name/Tags showing Side by side*/
+.note-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px; /* space between name and tags */
+  flex-wrap: wrap; /* allows tags to wrap if too many */
+}
+
+.note-author {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Tag container */
+.tag-container {
+  display: flex;
+  gap: 6px;
 }

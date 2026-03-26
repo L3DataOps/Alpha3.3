@@ -31,6 +31,12 @@
   margin: 3px 5px;
 }
 
+.tag-bubble,
+.tag-bubble span,
+.tag-bubble p {
+  color: white !important;
+}
+
 .summary-card {
   background-color: #f9f9f9;
   border: 1px solid #ddd;
@@ -126,8 +132,8 @@ small {
 }
 
 .scroller {
-  width: 585px;
-  height: 500px;
+  width: 1000px;
+  height: 800px;
   padding: 10px;
   margin-top: 20px;
   scrollbar-width: thin;
@@ -137,6 +143,7 @@ small {
 
 textarea {
   font-size: 18px;
+  margin: 15px;
 }
 
 

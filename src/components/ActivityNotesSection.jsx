@@ -19,6 +19,8 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
   const [notes, setNotes] = useState([]);
   const [text, setText] = useState("");
   const [editingId, setEditingId] = useState(null);
+  const [showTextbox, setShowTextbox] = useState(false);
+  const [attachments, setAttachments] = useState([]);
 
   useEffect(() => {
     setNotes(caseData.caseNotes || []);
@@ -43,6 +45,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
     const updatedNotes = await res.json();
     setNotes(updatedNotes);
     setText("");
+    setShowTextbox(false);
   };
 
   // UPDATE a note by sending a PUT request to the backend API with the updated text, then updating the local state with the new list of notes returned from the server.
@@ -59,6 +62,7 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
     setNotes(updatedNotes);
     setEditingId(null);
     setText("");
+    setShowTextbox(false);
   };
 
   // DELETE a note by sending a DELETE request to the backend API, then updating the local state with the new list of notes returned from the server.
@@ -74,37 +78,106 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
   const startEdit = (note) => {
     setEditingId(note._id);
     setText(note.text);
+    setShowTextbox(true);
   };
 
   // Render the Activity Notes section with a textarea for adding/editing notes and a list of existing notes. Each note displays its associated tags and has options to edit or delete it.
   return (
     <div className="activity-notes-card">
-      <h3>Activity Notes</h3>
+      <h2>Activity Notes</h2>
       <br></br>
 
-      {/* INPUT */}
-      <textarea
-        placeholder="Write a note..."
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        rows="5"
-        cols="55"
-      />
-      <br></br>
-      {editingId ? (
-        <button onClick={() => updateNote(editingId)}>Update</button>
-      ) : (
-        <button onClick={addNote}>Add Note</button>
+      {/* TEXTBOX INPUT */}
+      {showTextbox && (
+        <div>
+          <textarea
+            placeholder="Write a note..."
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            rows="5"
+            cols="95"
+          />
+
+          {/*ONCLICK BUTTONS*/}
+          <div className="note-actions">
+            {editingId ? (
+              <button
+                onClick={() => updateNote(editingId)}
+                className="btn-primary"
+              >
+                Update
+              </button>
+            ) : (
+              <button onClick={addNote} className="btn-primary">
+                Save
+              </button>
+            )}
+
+            <button
+              className="btn-secondary"
+              onClick={() => setShowTextbox(false)}
+            >
+              Cancel
+            </button>
+
+            {/* Attach Button */}
+            <label className="btn-secondary-attach-btn">
+              📎 Attach Files
+              <input
+                type="file"
+                multiple
+                hidden
+                onChange={(e) => {
+                  const files = Array.from(e.target.files);
+                  setAttachments((prev) => [...prev, ...files]);
+                }}
+              />
+            </label>
+          </div>
+        </div>
       )}
 
-      {/* LIST */}
+      {/*Adding Note Button*/}
+      {!showTextbox && (
+        <button className="add-note-btn" onClick={() => setShowTextbox(true)}>
+          + Add Note
+        </button>
+      )}
+
+      <br></br>
+
+      {/* Displaying selected files */}
+      {attachments.length > 0 && (
+        <div className="attachment-list">
+          {attachments.map((file, index) => (
+            <div key={index} className="attachment-item">
+              {file.name}
+              <button
+                className="remove-file"
+                onClick={() =>
+                  setAttachments(attachments.filter((_, i) => i !== index))
+                }
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* NOTES LIST */}
       <div className="scroller">
         {sortedNotes.map((note) => (
           <div className="notes-card">
-            <h3>{note.author}</h3>
-            {caseData.issueTags.map((tag, index) => (
-              <TagBubble key={index} tag={tag} />
-            ))}
+            <div className="note-header">
+              <h3 className="note-author">{note.author}</h3>
+
+              <div className="tag-container">
+                {caseData.issueTags.map((tag, index) => (
+                  <TagBubble key={index} tag={tag} />
+                ))}
+              </div>
+            </div>
             <ActivityNoteCard
               key={note._id}
               note={note}
