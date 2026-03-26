@@ -5,6 +5,7 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 =============================================================================================
 
 -- 2026-03-25 : Marcos - Created closed cases component to render closed cases and added route in App.js.
+-- 2026-03-26 : Marcos - Updated ClosedCases to filter closed cases and sort by closed date.
 */
 
 //Global Imports
@@ -59,6 +60,11 @@ const ClosedCases = () => {
         c.issueTags?.some((tag) => tag.toLowerCase().includes(search)))
     );
   });
+  const sortedCases = [...filteredCases].sort((a, b) => {
+    return (
+      new Date(b.closedAt || b.createdAt) - new Date(a.closedAt || a.createdAt)
+    );
+  });
 
   return (
     <div className="home">
@@ -83,7 +89,7 @@ const ClosedCases = () => {
         <p>Loading...</p>
       ) : (
         <div>
-          {filteredCases.map(
+          {sortedCases.map(
             (
               cases, // Maps thru the filtered cases based on the search and populates CaseCard comp. per case
             ) => (

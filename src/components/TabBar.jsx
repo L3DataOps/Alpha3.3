@@ -5,12 +5,14 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 =============================================================================================
 
 -- 2026-03-19 : Marcos - Added comment tracking
+-- 2026-03-26 : Marcos - Rendered hamburger menu to allow users toclose cases.
 */
 
 //Global Imports
 import { useTabs } from "../context/TabContext";
 import { useNavigate } from "react-router-dom";
 import closeIcon from "../images/close.png";
+import HamburgerMenu from "./HamburgerMenu";
 
 // Component for the tab bar that displays open tabs and allows navigation between them
 const TabBar = () => {
@@ -20,28 +22,31 @@ const TabBar = () => {
 
   return (
     //Render the tab bar with buttons for each open tab, allowing users to switch between tabs and close them
-    <div className="tab-bar">
-      {tabs.map((tab) => (
-        <div
-          key={tab.id}
-          className={`tab ${activeTab === tab.id ? "active" : ""}`}
-          onClick={() => {
-            setActiveTab(tab.id);
-            navigate(tab.path);
-          }}
-        >
-          {tab.title}
-          <span
-            className="close"
-            onClick={(e) => {
-              e.stopPropagation();
-              closeTab(tab.id);
+    <div className="top-tabs-row">
+      <div className="tab-bar">
+        {tabs.map((tab) => (
+          <div
+            key={tab.id}
+            className={`tab ${activeTab === tab.id ? "active" : ""}`}
+            onClick={() => {
+              setActiveTab(tab.id);
+              navigate(tab.path);
             }}
           >
-            <img src={closeIcon} alt="Close" />
-          </span>
-        </div>
-      ))}
+            {tab.title}
+            <span
+              className="close"
+              onClick={(e) => {
+                e.stopPropagation();
+                closeTab(tab.id);
+              }}
+            >
+              <img src={closeIcon} alt="Close" />
+            </span>
+          </div>
+        ))}
+      </div>
+      <HamburgerMenu />
     </div>
   );
 };
