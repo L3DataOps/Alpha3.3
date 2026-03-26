@@ -5,6 +5,7 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 =============================================================================================
 
 -- 2026-03-19 : Marcos - Added comment tracking
+-- 2026-03-26 : Daniel - Updated Closed timestamp
 */
 
 //Global Imports
@@ -60,7 +61,7 @@ const SummaryCard = ({ caseData }) => {
 
       <div className="datestamp">
         <strong>Comleted:</strong>
-        <DateCard time={caseData.createdAt} />
+        <DateCard time={caseData.closedAt} />
       </div>
 
       <div className="bar"></div>
