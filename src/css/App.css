@@ -37,3 +37,15 @@
   width: 30px;
   height: 30px;
 }
+
+
+.pages {
+  margin-left: 0;
+  padding: 0;
+}
+
+
+.with-sidebar .pages {
+  margin-left: 250px; 
+  padding: 20px;
+}

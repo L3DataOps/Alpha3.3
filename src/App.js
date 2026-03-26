@@ -6,6 +6,7 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 
 -- 2026-03-19 : Marcos - Added comment tracking
 -- 2026-03-25 : Marcos - Created closed cases component to render closed cases and added route in App.js.
+-- 2026-03-26 : Daniel - Added conditional css for the login page to remove sidebar offset 
 */
 
 //Global Imports
@@ -26,9 +27,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App">
-        
-        {/* 👇 Only show when logged in */}
+      <div className={`App ${user ? "with-sidebar" : "no-sidebar"}`}>
         {user && <Sidebar />}
         {user && <TabBar />}
 

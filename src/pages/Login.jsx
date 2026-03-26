@@ -1,5 +1,17 @@
+/*
+=============================================================================================
+Change Log ( -- YYYY-MM-DD : Name - Message)
+ -- Version changes and event history
+=============================================================================================
+
+-- 2026-03-19 : Daniel - Added comment tracking
+-- 2026-03-26 : Daniel - Added Login css
+*/
+
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import "../css/Login.css";
+import logo from "../images/logo.png";
 
 const Login = () => {
   const { login } = useAuth(); // ✅ ALWAYS at top
@@ -24,18 +36,25 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        onChange={(e) => setUsername(e.target.value)}
-        placeholder="Username"
-      />
-      <input
-        type="password"
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-      />
-      <button type="submit">Login</button>
-    </form>
+    <div className="login">
+      <img src={logo} id="logo" alt="logo" />
+      <form onSubmit={handleSubmit}>
+        <input
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
+          className="bubbleinput"
+        />
+        <input
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          className="bubbleinput"
+        />
+        <button type="submit" id="login">
+          Login
+        </button>
+      </form>
+    </div>
   );
 };
 
