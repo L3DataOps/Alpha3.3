@@ -1,11 +1,16 @@
 .initial-description-card {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+  background-color: #ffe5e5;
+  border: 3px solid #ff0000;
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
   flex: 1;
-  max-height: 90px;
+  grid-area: desc;
+  
+}
+
+.initial-description-card::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Opera */
 }
 
 .bar {
@@ -38,8 +43,6 @@
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
-  min-width: 300px;
-  min-height: 350px;
 }
 
 .accessory-card {
@@ -47,9 +50,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
-  margin-bottom: 20px;
-  min-width: 267px;
-  min-height: 237px;
+
 }
 
 .add-info-card {
@@ -57,9 +58,10 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
-  margin-bottom: 20px;
+  margin: 0px 10px;
   width: 100%;
   min-height: 237px;
+
 }
 
 .title {
@@ -74,23 +76,7 @@
   align-items: center;
 }
 
-.across {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  border: 1px solid #0000ff;
-}
 
-.between {
-  justify-content: space-between;
-}
-
-.down {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  border: 1px solid #ff0000;
-}
 
 .date {
   display: flex;
@@ -157,5 +143,26 @@ small {
 
 textarea {
   font-size: 18px;
-  margin: 20px;
+  margin: 15px;
+}
+
+
+.parent{
+   min-width: 350px;
+}
+
+.main{
+  display: flex;
+  border: 2px solid rgb(93, 63, 228);
+}
+
+.descandinfo{
+  border: 2px solid black;
+  width: 100%;
+}
+
+.info{
+  display: flex;
+  border: 3px solid aqua;
+  justify-content: space-around;
 }

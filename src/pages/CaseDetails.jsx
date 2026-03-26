@@ -15,6 +15,7 @@ import SummaryCard from "../components/SummaryCard";
 import AccessoryCard from "../components/AccessoryCard";
 import AddInfoCard from "../components/AddInfoCard";
 import TabCard from "../components/TabCard";
+import "../css/CaseCard.css";
 import ActivityNotesSection from "../components/ActivityNotesSection";
 
 const CaseDetails = () => {
@@ -59,12 +60,13 @@ const CaseDetails = () => {
   console.log("CaseDetails caseData:", caseData);
 
   return (
-    <div>
-      <div className="across">
+    <div className="parent">
+      <div className="main">
         <SummaryCard caseData={caseData} />
-        <div className="down">
+
+        <div className="descandinfo">
           <InitialDescriptionCard caseData={caseData} />
-          <div className="across">
+          <div className="info">
             <AccessoryCard dispatch={caseData.dispatch} />
             <AddInfoCard />
           </div>

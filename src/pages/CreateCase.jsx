@@ -6,6 +6,7 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 
 -- 2026-03-19 : Daniel - Added comment tracking
 -- 2026-03-20 : Marcos - Refactored CreateCase to use reusable SubmitButton and ClearButton components. Added form validation to control submit button state and implemented clear/reset functionality.
+-- 2026-03-26 : Daniel - Updated token passthru for createdBy attribute
 */
 
 // Global Imports
@@ -135,6 +136,7 @@ const CreateCase = () => {
       initialDescription: description,
       actionTaken: "Dispatched",
       bundledTickets: [],
+      isOpen: true,
     };
 
     console.log("Submitting case:", caseData);

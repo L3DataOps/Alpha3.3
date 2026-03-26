@@ -8,7 +8,10 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 */
 
 //Global Imports
-import "../css/CaseCard.css";
+import "../css/SummaryCard.css";
+import flag from "../images/flag.png";
+import DateCard from "./DateCard";
+import priority from "../images/signal.png";
 
 /*
 The SummaryCard component displays a summary of the case information,
@@ -20,27 +23,59 @@ const SummaryCard = ({ caseData }) => {
 
   return (
     <div className="summary-card">
-      <div className="title">
-        <h3>{caseData.caseEquipment.caseType}</h3>
-        <h3>{caseData.caseNumber}</h3>
+      <div className="header">
+        <div className="tickettype">
+          <h2>{caseData.caseEquipment.caseType}</h2>
+          <h2 id="casenum">{caseData.caseNumber}</h2>
+        </div>
+        <img src={flag} alt="flag" id="flag" />
       </div>
-      <div className="details">
-        <p>
-          <strong>Site:</strong> {caseData.siteName}
-        </p>
-        <p>
-          <strong>{caseData.caseEquipment.equipmentID}</strong>
-        </p>
-        <p>{caseData.caseEquipment.equipmentName}</p>
+
+      <div className="subheader">
+        <div className="site">
+          <h4>
+            {caseData.caseEquipment.equipmentID} -{" "}
+            <span id="eqnum">{caseData.caseEquipment.equipmentName}</span>
+          </h4>
+        </div>
+        <h4 id="category">{caseData.caseCategory}</h4>
       </div>
 
       <div className="bar"></div>
 
-      <p className="date">
-        <strong>Date Created:</strong> {caseData.createdAt.split("T")[0]}
-        <space></space>
-        {caseData.createdAt.split("T")[1].split(".")[0]}
-      </p>
+      <div className="datestamp">
+        <strong>Date Created:</strong>
+        <DateCard time={caseData.createdAt} />
+      </div>
+
+      <div className="datestamp">
+        <strong>Tech Enroute:</strong>
+        <DateCard time={caseData.createdAt} />
+      </div>
+
+      <div className="datestamp">
+        <strong>Tech Onsite:</strong>
+        <DateCard time={caseData.createdAt} />
+      </div>
+
+      <div className="datestamp">
+        <strong>Comleted:</strong>
+        <DateCard time={caseData.createdAt} />
+      </div>
+
+      <div className="bar"></div>
+
+      <div className="header">
+        <div className="action">
+          <h4>Action Taken</h4>
+          <h3 id="actiontaken">{caseData.actionTaken}</h3>
+        </div>
+
+        <div className="priority">
+          <h4>Priority</h4>
+          <img src={priority} alt="priority" id="priority" />
+        </div>
+      </div>
     </div>
   );
 };
