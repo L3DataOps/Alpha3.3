@@ -16,7 +16,7 @@ const InitialDescriptionCard = ({ caseData }) => {
   return (
     <div className="initial-description-card">
       <div className="across between">
-        <h3>Initial Description</h3>
+        <h3>{caseData.createdBy}</h3>
         <div>
           {caseData.issueTags.map((tag, index) => (
             <TagBubble key={index} tag={tag} />
