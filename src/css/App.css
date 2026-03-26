@@ -11,7 +11,7 @@
 .tab {
   padding: 3px;
   margin: 0px 5px;
-  background: #c9c9c9;
+  background: #838383;
   cursor: pointer;
   border-radius: 6px;
   display: flex;
@@ -20,10 +20,20 @@
   min-width: 180px;
   font-size: 1.2rem;
   font-weight: bold;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+.tab:hover{
+  background-color: rgb(238, 236, 236);
+  color: black;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 .tab.active {
   background: #ffffff;
+  color: black;
 }
 
 .top-tabs-row {
