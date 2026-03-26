@@ -67,7 +67,10 @@ const CaseDetails = () => {
         <div className="descandinfo">
           <InitialDescriptionCard caseData={caseData} />
           <div className="info">
-            <AccessoryCard dispatch={caseData.dispatch} />
+            <AccessoryCard
+              dispatch={caseData.dispatch}
+              bundledCases={caseData.bundledTickets}
+            />
             <AddInfoCard caseData={caseData} />
           </div>
         </div>
