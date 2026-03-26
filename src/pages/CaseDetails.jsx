@@ -68,7 +68,7 @@ const CaseDetails = () => {
           <InitialDescriptionCard caseData={caseData} />
           <div className="info">
             <AccessoryCard dispatch={caseData.dispatch} />
-            <AddInfoCard />
+            <AddInfoCard caseData={caseData} />
           </div>
         </div>
       </div>

@@ -91,13 +91,7 @@
   padding: 15px;
 }
 
-.tab-card {
-  background-color: #9c9999;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
+
 
 .containerTags {
   border-radius: 5px;
@@ -165,4 +159,42 @@ textarea {
   display: flex;
   border: 3px solid aqua;
   justify-content: space-around;
+}
+
+
+
+
+/*Tab Card CSS*/
+
+.tab-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.tab-buttons button{
+  padding: 5px 10px;
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.tab-buttons button:hover{
+  padding: 5px 10px;
+  background-color: #bebebe;
+  border-radius: 10px;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+#home{
+  max-width: 25px;
+}
+
+#info{
+  max-width: 25px;
 }

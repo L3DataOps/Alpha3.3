@@ -11,6 +11,9 @@ Change Log ( -- YYYY-MM-DD : Name - Message)
 import { useState } from "react";
 import "../css/CaseCard.css";
 import HomeTabCard from "./HomeTabCard";
+import home from "../images/home.png";
+import info from "../images/information.png";
+import email from "../images/mail.png";
 
 // Component for displaying a card with tabs for case details in the CaseDetails page
 const TabCard = ({ caseData }) => {
@@ -24,19 +27,19 @@ const TabCard = ({ caseData }) => {
         onClick={() => setActiveTab("summary")}
         className={activeTab === "summary" ? "active" : ""}
       >
-        Summary
+        <img src={home} alt="home" id="home" />
       </button>
       <button
         onClick={() => setActiveTab("accessory")}
         className={activeTab === "accessory" ? "active" : ""}
       >
-        Accessories
+        <img src={info} alt="info" id="info" />
       </button>
       <button
         onClick={() => setActiveTab("additional")}
         className={activeTab === "additional" ? "active" : ""}
       >
-        Additional Info
+        <img src={email} alt="info" id="info" />
       </button>
     </div>
   );
@@ -50,7 +53,7 @@ const TabCard = ({ caseData }) => {
       case "accessory":
         return (
           <div>
-            <h4>Accessories</h4>
+            <h4>IP Information</h4>
             {caseData.accessories?.length ? (
               <ul>
                 {caseData.accessories.map((acc, i) => (
@@ -58,7 +61,7 @@ const TabCard = ({ caseData }) => {
                 ))}
               </ul>
             ) : (
-              <p>No accessories added</p>
+              <p>No IP information added</p>
             )}
           </div>
         );
@@ -66,8 +69,8 @@ const TabCard = ({ caseData }) => {
       case "additional":
         return (
           <div>
-            <h4>Additional Info</h4>
-            <p>{caseData.additionalInfo || "No additional info"}</p>
+            <h4>Email Distribution List</h4>
+            <p>No emails added</p>
           </div>
         );
 
