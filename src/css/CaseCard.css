@@ -6,11 +6,10 @@
   margin-bottom: 20px;
   flex: 1;
   grid-area: desc;
-  
 }
 
 .initial-description-card::-webkit-scrollbar {
-  display: none;             /* Chrome, Safari, Opera */
+  display: none;
 }
 
 .bar {
@@ -51,7 +50,6 @@
   border-radius: 8px;
   padding: 20px;
   min-width: 450px;
-
 }
 
 .add-info-card {
@@ -62,7 +60,6 @@
   margin: 0px 10px;
   width: 100%;
   min-height: 237px;
-
 }
 
 .title {
@@ -77,8 +74,6 @@
   align-items: center;
 }
 
-
-
 .date {
   display: flex;
   justify-content: space-between;
@@ -91,8 +86,6 @@
   flex: 1;
   padding: 15px;
 }
-
-
 
 .containerTags {
   border-radius: 5px;
@@ -141,29 +134,25 @@ textarea {
   margin: 15px;
 }
 
-
-.parent{
-   min-width: 350px;
+.parent {
+  min-width: 350px;
 }
 
-.main{
+.main {
   display: flex;
   border: 2px solid rgb(93, 63, 228);
 }
 
-.descandinfo{
+.descandinfo {
   border: 2px solid black;
   width: 100%;
 }
 
-.info{
+.info {
   display: flex;
   border: 3px solid aqua;
   justify-content: space-around;
 }
-
-
-
 
 /*Tab Card CSS*/
 
@@ -175,7 +164,7 @@ textarea {
   margin-bottom: 20px;
 }
 
-.tab-buttons button{
+.tab-buttons button {
   padding: 5px 10px;
   background: transparent;
   border: none;
@@ -183,7 +172,7 @@ textarea {
   cursor: pointer;
 }
 
-.tab-buttons button:hover{
+.tab-buttons button:hover {
   padding: 5px 10px;
   background-color: #bebebe;
   border-radius: 10px;
@@ -192,10 +181,10 @@ textarea {
   cursor: pointer;
 }
 
-#home{
+#home {
   max-width: 25px;
 }
 
-#info{
+#info {
   max-width: 25px;
 }
