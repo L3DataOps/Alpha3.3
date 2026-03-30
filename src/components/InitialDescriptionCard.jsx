@@ -15,7 +15,7 @@ import TagBubble from "./TagBubble";
 const InitialDescriptionCard = ({ caseData }) => {
   return (
     <div className="initial-description-card">
-      <div className="across between">
+      <div className="header">
         <h3>{caseData.createdBy}</h3>
         <div>
           {caseData.issueTags.map((tag, index) => (

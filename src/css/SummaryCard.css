@@ -1,6 +1,6 @@
 .summary-card{
-    border: 1px solid red;
     min-width: 350px;
+    flex: 1;
 }
 
 .header{
