@@ -19,6 +19,7 @@ import CaseDetails from "./pages/CaseDetails";
 import Login from "./pages/Login";
 import Sidebar from "./components/Sidebar";
 import TabBar from "./components/TabBar";
+import RNMDashboard from "./components/RNMDashboard";
 import "./css/App.css";
 
 // The main App component sets up the routing for the application using React Router. It includes a Sidebar and TabBar that are always visible, and defines routes for the Home page, Create Case page, and Case Details page. Each route checks if the user is authenticated and either renders the appropriate component or redirects to the login page if not authenticated.
@@ -59,6 +60,11 @@ function App() {
             <Route
               path="/cases/:id"
               element={user ? <CaseDetails /> : <Navigate to="/login" />}
+            />
+
+            <Route
+              path="/rnm-dashboard"
+              element={user ? <RNMDashboard /> : <Navigate to="/login" />}
             />
 
           </Routes>
