@@ -143,12 +143,7 @@ textarea {
   margin-bottom: 15px;
 }
 
-<<<<<<< HEAD
-.descandinfo {
-  border: 2px solid black;
-=======
 .descandinfo{
->>>>>>> a95970f397cc6dd15ca4413a6537b8236fb294f9
   width: 100%;
   margin:0px 20px;
 }
@@ -158,14 +153,11 @@ textarea {
   justify-content: space-around;
 }
 
-<<<<<<< HEAD
-=======
 /*Desc Card CSS*/
 
 
 
 
->>>>>>> a95970f397cc6dd15ca4413a6537b8236fb294f9
 /*Tab Card CSS*/
 
 .tab-card {
