@@ -32,7 +32,9 @@ function Sidebar() {
         <Link to="/">Open Cases</Link>
         <Link to="/closed-cases">Closed Cases</Link>
         <Link to="/create-case">Create Case</Link>
+        <Link to="/rnm-dashboard">RNM Dashboard</Link>
       </nav>
+
       <div className="settings">
         <br />
         <br />

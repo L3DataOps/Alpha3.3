@@ -115,7 +115,12 @@ const ActivityNotesSection = ({ caseData, currentUser }) => {
 
             <button
               className="btn-secondary"
-              onClick={() => setShowTextbox(false)}
+              onClick={() => {
+                setShowTextbox(false);
+                setText("");
+                setEditingId(null);
+                setAttachments([]);
+              }}
             >
               Cancel
             </button>
